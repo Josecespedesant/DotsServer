@@ -2,7 +2,6 @@ package server;
 
 import java.io.*;
 import java.net.*;
-
 import org.json.simple.JSONObject;
  
 /**
@@ -11,12 +10,20 @@ import org.json.simple.JSONObject;
  * @author www.codejava.net
  */
 public class ServerThread extends Thread {
+	//Attribute of the class ServerThread
     private Socket socket;
- 
+    
+    /**
+     * Constructor of the ServerThread class that receives the socket.
+     * @param socket
+     */
     public ServerThread(Socket socket) {
         this.socket = socket;
     }
- 
+    
+    /**
+     * Keep the server running.
+     */
     @SuppressWarnings("unchecked")
 	public void run() {
     	JSONObject obj = new JSONObject();
@@ -32,6 +39,7 @@ public class ServerThread extends Thread {
                 e.printStackTrace();
             }
         try {
+        	//Aquí hay que modificar esto para que la condicion de imprimir el objeto json no sea escribir en la consola.
             InputStream input = socket.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             PrintStream ps = new PrintStream(socket.getOutputStream());
