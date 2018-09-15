@@ -1,4 +1,4 @@
-package linkedListStructure;
+package linkedlist;
 
 /**
  * SimpleLinkedList class declaration.

@@ -42,6 +42,8 @@ public class ServerThread extends Thread {
           } catch (IOException e) {
                 e.printStackTrace();
             }
+         
+         
         try {
         	//Aquí hay que modificar esto para que la condicion de imprimir el objeto json no sea escribir en la consola.
             InputStream input = socket.getInputStream();

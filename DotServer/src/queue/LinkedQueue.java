@@ -1,6 +1,6 @@
 package queue;
 
-import linkedListStructure.SimpleLinkedList;
+import linkedlist.SimpleLinkedList;
 
 /**
  * LinkedQueue class declaration.
