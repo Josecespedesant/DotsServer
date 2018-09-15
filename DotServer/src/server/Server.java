@@ -1,14 +1,17 @@
 package server;
 import java.io.*;
 import java.net.*;
+
+import queue.LinkedQueue;
 /**
  * Declaración de la clase Server, maneja toda la lógica del juego Dots
  * @author Daniel Sing
  *
  */
 public class Server {
-	//Atributo de la clase server
+	//Atributos de la clase server
 	private ServerSocket server;
+	private LinkedQueue<Socket> queue;
 	
 	/**
 	 * Constructor de la clase Server que recibe como parámetro la ip en donde se estará ejecutando.
@@ -33,7 +36,7 @@ public class Server {
             	while (true) {
             		Socket socket = server.accept();
             		System.out.println("New client connected");
-            		new ServerThread(socket).start();
+            		new ServerThread(socket).start();    		
             }
  
         } catch (IOException ex) {

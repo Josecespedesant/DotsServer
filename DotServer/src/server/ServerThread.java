@@ -3,6 +3,8 @@ package server;
 import java.io.*;
 import java.net.*;
 import org.json.simple.JSONObject;
+
+import queue.LinkedQueue;
  
 /**
  * This thread is responsible to handle client connection.
@@ -26,6 +28,7 @@ public class ServerThread extends Thread {
      */
     @SuppressWarnings("unchecked")
 	public void run() {
+    	
     	JSONObject obj = new JSONObject();
         obj.put("X", "numero en X");
         obj.put("Y", "numero en Y");
