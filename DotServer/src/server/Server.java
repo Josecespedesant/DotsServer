@@ -2,6 +2,8 @@ package server;
 import java.io.*;
 import java.net.*;
 import queue.LinkedQueue;
+
+import java.util.LinkedList;
 /**
  * Declaración de la clase Server, maneja toda la lógica del juego Dots
  * @author Daniel Sing
@@ -32,12 +34,22 @@ public class Server {
 	private void listen() throws Exception{
             try{
             	System.out.println("Server is listening on port " + getPort());
-            	
+            	LinkedList<ServerThread> cola = new LinkedList(); //biblioteca prohibida por el Dios de la progra TOñO GONZALEZ
             	while (true) {
             		Socket socket = server.accept();
-            		System.out.println("New client connected");
-            		ServerThread st = new ServerThread(socket);
-            		st.start();
+        			ServerThread st = new ServerThread(socket);
+            		
+            		if(cola.size()<2) { 
+                		cola.offer(st); // añade un elemento a la cola
+            			System.out.println(cola.size());
+                		System.out.println("New client connected");
+                		st.start();
+                		
+            		}else { //si la cola tiene mas de dos elementos manda ese manesaje 
+                		cola.offer(st); // añade un elemento a la cola
+            			System.out.println("Numero maximo de jugadores alcanzado");
+            			System.out.println("Cliente en lista de espera");
+            		}            		
             }
  
         } catch (IOException ex) {
@@ -68,8 +80,8 @@ public class Server {
  * @throws Exception
  */
 public static void main(String[] args) throws Exception {
-    //  if (args.length < 1) return;
-  	Server app = new Server("192.168.100.2");
+  	Server app = new Server("127.0.0.1");
   	app.listen();
+  	
   }
 }
