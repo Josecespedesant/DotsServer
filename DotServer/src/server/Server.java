@@ -3,17 +3,18 @@ import java.io.*;
 import java.net.*;
 import queue.LinkedQueue;
 /**
- * Declaración de la clase Server, maneja toda la lógica del juego Dots
+ * Declaration of the class Server.
  * @author Daniel Sing
  *
  */
 public class Server {
-	//Atributos de la clase server
+	//Attributes of the class server.
 	private ServerSocket server;
-	private LinkedQueue<Socket> clients;
+	//Esta bandera permitirá saber cuándo hay un juego en progreso y cuándo no.
+	private boolean flagGame = false;
 	
 	/**
-	 * Constructor de la clase Server que recibe como parámetro la ip en donde se estará ejecutando.
+	 * Constructor of the class Server that receives as the IP where it'll be running as parameter.
 	 * @param ipAddress
 	 * @throws Exception
 	 */
@@ -26,18 +27,35 @@ public class Server {
 	}
 	
 	/**
-	 * Método que estará escuchando las solicitudes de los clientes.
+	 * Method that'll be listening to the requests from the clients.
 	 * @throws Exception
 	 */
 	private void listen() throws Exception{
             try{
             	System.out.println("Server is listening on port " + getPort());
+            	LinkedQueue<ServerThread> clients = new LinkedQueue<ServerThread>();
             	
             	while (true) {
             		Socket socket = server.accept();
-            		System.out.println("New client connected");
-            		ServerThread st = new ServerThread(socket);
-            		st.start();
+            		ServerThread st = new ServerThread(socket);      		
+            		if(clients.getSize()<2) {
+            			clients.enqueue(st);
+            			System.out.println(clients.getSize());
+            			System.out.println("New client connected");
+            			st.start();
+            			if(clients.getSize()==2) {
+            				System.out.println("Comienza el juego");
+            				clients.dequeue();
+            				clients.dequeue();
+            				flagGame = true;
+            				//Y cuando el juego termine se cambia el flag nuevamente a falso
+            			}
+            		}else {
+            			clients.enqueue(st);
+            			System.out.println("Número máximo de jugadores alcanzado");
+            			System.out.println("Cliente en lista de espera");
+            		}
+            		
             }
  
         } catch (IOException ex) {
