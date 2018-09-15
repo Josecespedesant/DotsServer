@@ -1,7 +1,6 @@
 package server;
 import java.io.*;
 import java.net.*;
-
 import queue.LinkedQueue;
 /**
  * Declaración de la clase Server, maneja toda la lógica del juego Dots
@@ -11,7 +10,7 @@ import queue.LinkedQueue;
 public class Server {
 	//Atributos de la clase server
 	private ServerSocket server;
-	private LinkedQueue<Socket> queue;
+	private LinkedQueue<Socket> clients;
 	
 	/**
 	 * Constructor de la clase Server que recibe como parámetro la ip en donde se estará ejecutando.
@@ -33,10 +32,12 @@ public class Server {
 	private void listen() throws Exception{
             try{
             	System.out.println("Server is listening on port " + getPort());
+            	
             	while (true) {
             		Socket socket = server.accept();
             		System.out.println("New client connected");
-            		new ServerThread(socket).start();    		
+            		ServerThread st = new ServerThread(socket);
+            		st.start();
             }
  
         } catch (IOException ex) {

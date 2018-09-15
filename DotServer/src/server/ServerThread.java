@@ -14,6 +14,7 @@ import queue.LinkedQueue;
 public class ServerThread extends Thread {
 	//Attribute of the class ServerThread
     private Socket socket;
+    private LinkedQueue<Socket> queue;
     
     /**
      * Constructor of the ServerThread class that receives the socket.
