@@ -6,6 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="DotServer/src"/>
-	<classpathentry kind="lib" path="C:/Users/Jose Antonio/Desktop/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/danie/eclipse-workspace/DotsServer/json-simple-1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

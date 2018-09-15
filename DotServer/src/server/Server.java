@@ -44,7 +44,7 @@ public class Server {
             			System.out.println("New client connected");
             			st.start();
             			if(clients.getSize()==2) {
-            				System.out.println("Comienza el juego");
+            				System.out.println("Comienza el juego");//Aquí se llamaría un método que cambie la pantalla de registro a la del juego en sí
             				clients.dequeue();
             				clients.dequeue();
             				flagGame = true;
