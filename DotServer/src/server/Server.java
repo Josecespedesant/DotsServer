@@ -17,7 +17,7 @@ public class Server {
 	 */
 	public Server(String ipAddress) throws Exception{
 		if(ipAddress != null && !ipAddress.isEmpty()) {
-			this.server = new ServerSocket(0,1,InetAddress.getByName(ipAddress));	
+			this.server = new ServerSocket(4444,1,InetAddress.getByName(ipAddress));	
 		}else {
 			this.server = new ServerSocket(0,1,InetAddress.getLocalHost());	
 		}
@@ -65,7 +65,7 @@ public class Server {
  */
 public static void main(String[] args) throws Exception {
     //  if (args.length < 1) return;
-  	Server app = new Server("127.0.0.1");
+  	Server app = new Server("192.168.100.2");
   	app.listen();
   }
 }
