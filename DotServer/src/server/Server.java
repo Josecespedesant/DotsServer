@@ -10,6 +10,7 @@ import queue.LinkedQueue;
 public class Server {
 	//Attributes of the class server.
 	private ServerSocket server;
+	private static Server sv;
 	//Esta bandera permitirá saber cuándo hay un juego en progreso y cuándo no.
 	private boolean flagGame = false;
 	
@@ -18,12 +19,28 @@ public class Server {
 	 * @param ipAddress
 	 * @throws Exception
 	 */
-	public Server(String ipAddress) throws Exception{
+	private Server(String ipAddress) throws Exception{
 		if(ipAddress != null && !ipAddress.isEmpty()) {
 			this.server = new ServerSocket(4444,1,InetAddress.getByName(ipAddress));	
 		}else {
 			this.server = new ServerSocket(0,1,InetAddress.getLocalHost());	
 		}
+	}
+	
+	/**
+	 * Singleton pattern used to create just one instance of the server.
+	 * @param ipAddress
+	 * @return
+	 * @throws Exception
+	 */
+	public static Server getSingletonInstance(String ipAddress) throws Exception {
+		if(sv == null) {
+			sv = new Server(ipAddress);
+		}
+		else {
+			System.out.println("No se puede crear más de una instancia del servidor");
+		}
+		return sv;
 	}
 	
 	/**
@@ -86,8 +103,7 @@ public class Server {
  * @throws Exception
  */
 public static void main(String[] args) throws Exception {
-    //  if (args.length < 1) return;
-  	Server app = new Server("192.168.100.2");
+  	Server app = getSingletonInstance("192.168.100.2");
   	app.listen();
   }
 }
