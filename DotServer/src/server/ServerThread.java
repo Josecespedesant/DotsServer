@@ -4,6 +4,9 @@ import java.io.*;
 import java.net.*;
 import org.json.simple.JSONObject;
 
+import encode.MatrixToJson;
+import linkedlist.LinkedList;
+import matrix.Matrix;
 import queue.LinkedQueue;
  
 /**
@@ -30,13 +33,19 @@ public class ServerThread extends Thread {
     @SuppressWarnings("unchecked")
 	public void run() {
     	
-    	JSONObject obj = new JSONObject();
-        obj.put("X", "numero en X");
-        obj.put("Y", "numero en Y");
-
+    	MatrixToJson mtoj = new MatrixToJson();
+    	JSONObject obj = mtoj.fetchJsonFile("test.json");
+    	Matrix m = mtoj.decodeMatrix(obj);
+    	LinkedList l = new LinkedList();
+    	
+    	//Aquí se hace la lógica sobre la matriz.
+    	
+    	
+    	JSONObject obj2 = mtoj.encondeMatrix(m,l);
+    	
          try (FileWriter file = new FileWriter("test.json")) {
 
-                file.write(obj.toJSONString());
+                file.write(obj2.toJSONString());
                 file.flush();
 
           } catch (IOException e) {

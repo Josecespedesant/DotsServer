@@ -9,7 +9,7 @@ public class SimpleLinkedList<T>{
 	/**
 	 * SimpleLinkedList class attributes.
 	 */
-	private Node<T> first;
+	private SimpleNode<T> first;
 	private int len;
 	
 	/**
@@ -41,7 +41,7 @@ public class SimpleLinkedList<T>{
 	 * @param Data
 	 */
 	public void addFront(T Data) {
-		Node<T> newNode = new Node<T>();
+		SimpleNode<T> newNode = new SimpleNode<T>();
 		newNode.setData(Data);
 		
 		if(isEmpty()) {
@@ -71,13 +71,13 @@ public class SimpleLinkedList<T>{
 	 * @param Data
 	 */
 	public void addLast(T Data) {
-		Node<T> newNode = new Node<T>();
+		SimpleNode<T> newNode = new SimpleNode<T>();
 		newNode.setData(Data);
 		if(isEmpty()) {
 			first = newNode;
 		}
 		else {
-			Node<T> aux = new Node<T>();
+			SimpleNode<T> aux = new SimpleNode<T>();
 			aux = first;
 			while(aux.getNext()!=null) {
 				aux = aux.getNext();
@@ -91,7 +91,7 @@ public class SimpleLinkedList<T>{
 	 * Method that delete the last Data at the end of the list.
 	 */
 	public void deleteLast() {
-		Node<T> aux = new Node<T>();
+		SimpleNode<T> aux = new SimpleNode<T>();
 		aux = first;
 		if(isEmpty() || len == 1 ) {
 			first = null;
@@ -110,7 +110,7 @@ public class SimpleLinkedList<T>{
 	 * @param t
 	 */
 	public void deleteByElement(T t) {
-		Node<T> aux = new Node<T>();
+		SimpleNode<T> aux = new SimpleNode<T>();
 		
 		aux = first;
 		if(isEmpty()) {
@@ -138,7 +138,7 @@ public class SimpleLinkedList<T>{
 	 * Method that displays the elements of the list on console.
 	 */
 	public void printList() {
-		Node<T> aux = first;
+		SimpleNode<T> aux = first;
 		while(aux!= null) {
 			System.out.println(aux.getData().toString());
 			aux = aux.getNext();
@@ -149,7 +149,7 @@ public class SimpleLinkedList<T>{
 	 * Returns the first element of the list.
 	 * @return first
 	 */
-	public Node<T> getFirst() {
+	public SimpleNode<T> getFirst() {
 		return first;
 	}
 	
@@ -157,8 +157,8 @@ public class SimpleLinkedList<T>{
 	 * Allows you to get the last item of the list.
 	 * @return
 	 */
-	protected Node<T> getLast(){
-		Node<T> aux = first;
+	protected SimpleNode<T> getLast(){
+		SimpleNode<T> aux = first;
 		while(aux.getNext()!=null) {
 		aux = aux.getNext();
 		}
@@ -170,7 +170,7 @@ public class SimpleLinkedList<T>{
 	 * @return
 	 */
 	public boolean contains(T t) {
-		Node<T> aux = first;
+		SimpleNode<T> aux = first;
 		boolean ans = false;
 		while(aux!=null) {
 			if(aux.getData().equals(t)) {
