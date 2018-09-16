@@ -13,7 +13,7 @@ public class Server {
 	private static Server sv;
 	//Esta bandera permitirá saber cuándo hay un juego en progreso y cuándo no.
 	private boolean flagGame = false;
-	
+	 
 	/**
 	 * Constructor of the class Server that receives as the IP where it'll be running as parameter.
 	 * @param ipAddress
@@ -46,7 +46,7 @@ public class Server {
 	/**
 	 * Method that'll be listening to the requests from the clients.
 	 * @throws Exception
-	 */
+	 */ 
 	private void listen() throws Exception{
             try{
             	System.out.println("Server is listening on port " + getPort());
@@ -59,7 +59,7 @@ public class Server {
             			clients.enqueue(st);
             			System.out.println(clients.getSize());
             			System.out.println("New client connected");
-            			st.start();
+            			st.eleccion();
             			if(clients.getSize()==2 && flagGame == false) {
             				System.out.println("Comienza el juego");//Aquí se llamaría un método que cambie la pantalla de registro a la del juego en sí
             				clients.dequeue();
@@ -103,7 +103,7 @@ public class Server {
  * @throws Exception
  */
 public static void main(String[] args) throws Exception {
-  	Server app = getSingletonInstance("192.168.100.2");
+  	Server app = getSingletonInstance("127.0.0.1");
   	app.listen();
   }
 }
