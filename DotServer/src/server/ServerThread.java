@@ -36,6 +36,8 @@ public class ServerThread extends Thread {
     	MatrixToJson mtoj = new MatrixToJson();
     	JSONObject obj = mtoj.fetchJsonFile("test.json");
     	Matrix m = mtoj.decodeMatrix(obj);
+    	
+    	//Esta lista es para que funque, de momento no sé que iría
     	LinkedList l = new LinkedList();
     	
     	//Aquí se hace la lógica sobre la matriz.
