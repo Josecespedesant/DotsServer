@@ -73,8 +73,8 @@ public class MatrixToJson {
         JSONArray score = (JSONArray) jsonDoc.get("points");
 
         //TODO: usar
-        scorePlayer1 = (int) score.get(0);
-        scorePlayer2 = (int) score.get(1);
+        //scorePlayer1 = (int) score.get(0);
+        //scorePlayer2 = (int) score.get(1);
 
         JSONArray _matrix = (JSONArray) jsonDoc.get("matrix");
 
