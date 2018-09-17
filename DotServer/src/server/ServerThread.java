@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 import org.json.simple.JSONObject;
 
-import encode.MatrixToJson;
+import json_conversion.Conversion;
+import json_parse.Parse;
 import linkedlist.LinkedList;
 import matrix.Matrix;
 import queue.LinkedQueue;
@@ -35,17 +36,15 @@ public class ServerThread extends Thread {
      */
     @SuppressWarnings("unchecked")
     public void send() {
-    	MatrixToJson mtoj = new MatrixToJson();
-    	JSONObject obj = mtoj.fetchJsonFile("test.json");
-    	Matrix m = mtoj.decodeMatrix(obj);
     	
-    	//Esta lista es para que funque, de momento no s� que ir�a
+    	Conversion conv = new Conversion();
+    	
+    	Parse parser = new Parse();
     	LinkedList l = new LinkedList();
+    	l.append(1);
     	
-    	//Aqu� se hace la l�gica sobre la matriz.
-    	
-    	
-    	
+    	JSONObject obj = conv.fetchJsonFile("matrixAsJson.json");
+    	Matrix matrix = parser.JsonToMatrix(obj);
     	
     	/*
     	 * JSONObject obj = new JSONObject();
@@ -55,9 +54,11 @@ public class ServerThread extends Thread {
     	// con eso si sirve Xd
     	
     	
-    	JSONObject obj2 = mtoj.encondeMatrix(m,l);
     	
-         try (FileWriter file = new FileWriter("test.json")) {
+    	
+    	JSONObject obj2 = parser.MatrixToJson(matrix, l);
+    	
+         try (FileWriter file = new FileWriter("matrixAsJson.json")) {
 
                 file.write(obj2.toJSONString());
                 file.flush();

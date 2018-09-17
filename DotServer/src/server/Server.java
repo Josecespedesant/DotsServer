@@ -103,7 +103,7 @@ public class Server {
  * @throws Exception
  */
 public static void main(String[] args) throws Exception {
-  	Server app = getSingletonInstance("127.0.0.1");
+  	Server app = getSingletonInstance("192.168.100.2");
   	app.listen();
   }
 }
