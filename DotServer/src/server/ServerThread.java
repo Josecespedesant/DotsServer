@@ -40,9 +40,6 @@ public class ServerThread extends Thread {
     	Conversion conv = new Conversion();
     	
     	Parse parser = new Parse();
-    	LinkedList l = new LinkedList();
-    	l.append(1);
-    	
     	JSONObject obj = conv.fetchJsonFile("matrixAsJson.json");
     	Matrix matrix = parser.JsonToMatrix(obj);
     	
@@ -54,13 +51,9 @@ public class ServerThread extends Thread {
     	// con eso si sirve Xd
     	
     	
-    	
-    	
-    	JSONObject obj2 = parser.MatrixToJson(matrix, l);
-    	
          try (FileWriter file = new FileWriter("matrixAsJson.json")) {
 
-                file.write(obj2.toJSONString());
+                file.write(obj.toJSONString());
                 file.flush();
 
           } catch (IOException e) {
