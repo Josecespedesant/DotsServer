@@ -5,6 +5,8 @@ import java.net.*;
 import java.util.Scanner;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import json_conversion.Conversion;
 import json_parse.Parse;
@@ -18,7 +20,7 @@ import queue.LinkedQueue;
  * @author www.codejava.net
  */
 public class ServerThread extends Thread {
-	//Attribute of the class ServerThread
+ //Attribute of the class ServerThread
     private Socket socket;
     private LinkedQueue<Socket> queue;
     public static int i;
@@ -36,22 +38,16 @@ public class ServerThread extends Thread {
      */
     @SuppressWarnings("unchecked")
     public void send() {
-    	
-    	Conversion conv = new Conversion();
-    	
-    	Parse parser = new Parse();
-    	JSONObject obj = conv.fetchJsonFile("matrixAsJson.json");
-    	Matrix matrix = parser.JsonToMatrix(obj);
-    	
-    	/*
-    	 * JSONObject obj = new JSONObject();
-        obj.put("X", "numero en X");
-        obj.put("Y", "numero en Y");  
-    	 */
-    	// con eso si sirve Xd
-    	
-    	
-         try (FileWriter file = new FileWriter("matrixAsJson.json")) {
+     
+     Conversion conv = new Conversion();
+     
+     
+     JSONObject obj = conv.fetchJsonFile("matrixAsJson.json");
+     
+     
+     
+         
+     /*    try (FileWriter file = new FileWriter("matrixAsJson.json")) {
 
                 file.write(obj.toJSONString());
                 file.flush();
@@ -60,9 +56,9 @@ public class ServerThread extends Thread {
                 e.printStackTrace();
             }
          
-         
+         */
         try {
-        	//Aqu� hay que modificar esto para que la condicion de imprimir el objeto json no sea escribir en la consola.
+         //Aqu� hay que modificar esto para que la condicion de imprimir el objeto json no sea escribir en la consola.
             PrintStream ps = new PrintStream(socket.getOutputStream());
             ps.println("Server: " + obj);
  
@@ -72,38 +68,47 @@ public class ServerThread extends Thread {
             ex.printStackTrace();
         }
     }
-    
-    public void received() throws IOException {
-		BufferedReader brs = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		try{
-			String time = brs.readLine();
-			System.out.println(time);
-		} 
-		catch (UnknownHostException ex) {
-			System.out.println("Server not found: " + ex.getMessage());
-		} 
-		catch (IOException ex) {
-			System.out.println("I/O error: " + ex.getMessage());
-		}
-	}
+    public void received() throws IOException, ParseException {
+  BufferedReader brs = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+  try{
+   String JsonString = brs.readLine();
+  // System.out.println(JsonString);
+   JSONParser parserS = new JSONParser();
+   JSONObject json = (JSONObject) parserS.parse(new InputStreamReader(new FileInputStream("matrixAsJson.json"))); //de String a Json
+   System.out.println(JsonString);
+   
+      Parse parserM = new Parse();
+
+      Matrix matrix = parserM.JsonToMatrix(json);
+      matrix.printMatrix();
+
+
+  } 
+  catch (UnknownHostException ex) {
+   System.out.println("Server not found: " + ex.getMessage());
+  } 
+  catch (IOException ex) {
+   System.out.println("I/O error: " + ex.getMessage());
+  }
+ }
  
-	public void eleccion() throws IOException { //metodo prueba
-		System.out.println("1: enviar, 2: recibir");
-		Scanner sc = new Scanner(System.in);
-		i = sc.nextInt();
-		this.eleccion1();
-		if(i==1) {
-			this.send();
-		}else {
-			this.received();
-		}
-	}
+ public void eleccion() throws IOException, ParseException { //metodo prueba
+  System.out.println("1: enviar, 2: recibir");
+  Scanner sc = new Scanner(System.in);
+  i = sc.nextInt();
+  this.eleccion1();
+  if(i==1) {
+   this.send();
+  }else {
+   this.received();
+  }
+ }
 
-	public void eleccion1() throws IOException { //metodo prueba
-		InputStream input = socket.getInputStream();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-		PrintStream ps = new PrintStream(socket.getOutputStream());
+ public void eleccion1() throws IOException { //metodo prueba
+  InputStream input = socket.getInputStream();
+  BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+  PrintStream ps = new PrintStream(socket.getOutputStream());
 
-		ps.println(i);
-	}
+  ps.println(i);
+ }
 }
