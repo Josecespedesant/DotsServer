@@ -44,19 +44,6 @@ public class ServerThread extends Thread {
      
      JSONObject obj = conv.fetchJsonFile("matrixAsJson.json");
      
-     
-     
-         
-     /*    try (FileWriter file = new FileWriter("matrixAsJson.json")) {
-
-                file.write(obj.toJSONString());
-                file.flush();
-
-          } catch (IOException e) {
-                e.printStackTrace();
-            }
-         
-         */
         try {
          //Aqu� hay que modificar esto para que la condicion de imprimir el objeto json no sea escribir en la consola.
             PrintStream ps = new PrintStream(socket.getOutputStream());
