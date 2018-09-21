@@ -29,7 +29,7 @@ public class Server {
 	
 	/**
 	 * Singleton pattern used to create just one instance of the server.
-	 * @param ipAddress
+	 * @param ipAddress 
 	 * @return
 	 * @throws Exception
 	 */
@@ -103,7 +103,7 @@ public class Server {
  * @throws Exception
  */
 public static void main(String[] args) throws Exception {
-  	Server app = getSingletonInstance("192.168.100.2");
+  	Server app = getSingletonInstance("172.18.78.21");
   	app.listen();
   }
 }
