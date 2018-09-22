@@ -11,11 +11,20 @@ public class BoardLogic implements MouseListener{
 	Player p1;
 	Player p2;
 	TurnBaseB tb;
+	//Lineas horizontales
 	int[] A1, B1, C1, D1, A2, B2, C2, D2, A3, B3, C3, D3, A4, B4, C4, D4, A5, B5, C5, D5;
+	//Lineas verticales
 	int[] E1, F1, G1, H1, E2, F2, G2, H2, E3, F3, G3, H3, E4, F4, G4, H4, E5, F5, G5, H5;
-	
+	//Lineas diagonales (Diagonal N del Cuadro M, si es D1 = / si es D2 = \)
+	int[] D1C1, D2C1, D1C2, D2C2,D1C3, D2C3,D1C4, D2C4,D1C5, D2C5,D1C6, 
+	D2C6,D1C7, D2C7,D1C8, D2C8,D1C9, D2C9,D1C10, D2C10,D1C11, D2C11,D1C12, 
+	D2C12,D1C13, D2C13,D1C14, D2C14,D1C15, D2C15,D1C16, D2C16;
+	//Todos los posibles cuadrados
 	int[][] cuad1,cuad2,cuad3,cuad4,cuad5,cuad6,cuad7,cuad8,cuad9,cuad10,cuad11,cuad12,cuad13,cuad14,cuad15,cuad16;
-	
+	//Todos los posibles triángulos
+	int[][] tri1,tri2,tri3,tri4,tri5,tri6,tri7,tri8,tri9,tri10,tri11,tri12,tri13,tri14,tri15,tri16,tri17,tri18,tri19,tri20,tri21,tri22,tri23,tri24,tri25,tri26,tri27,tri28,tri29,tri30,tri31,tri32;
+	int[][] tri33,tri34,tri35,tri36,tri37,tri38,tri39,tri40,tri41,tri42,tri43,tri44,tri45,tri46,tri47,tri48,tri49,tri50,tri51,tri52,tri53,tri54,tri55,tri56,tri57,tri58,tri59,tri60,tri61,tri62,tri63,tri64;
+	int[][][] todosLosTriang;
 	int[][][] todasLasCajas;
 	
 	//Esto sirve para cambiar el color de la línea
@@ -25,6 +34,7 @@ public class BoardLogic implements MouseListener{
 		this.p1 = new Player("Perro", 1);
 		this.p2 = new Player("Gato", 2);
 		organizarCuadrados();
+		organizarTriangulos();
 		crearLineas();
 		
 		//Genera los "puntos" de la matriz
@@ -62,7 +72,102 @@ public class BoardLogic implements MouseListener{
 		this.tb = new TurnBaseB(this,p1,p2);
 	}
 
-
+	public void organizarTriangulos() {
+		//Primera fila
+		this.tri1 = new int [][] {this.A1, this.E1, this.D1C1};
+		this.tri2 = new int [][] {this.A1, this.E2, this.D2C1};
+		this.tri3 = new int [][] {this.A2, this.E1, this.D2C1};
+		this.tri4 = new int [][] {this.A2, this.E2, this.D1C1};
+		
+		this.tri5 = new int [][] {this.B1, this.E2, this.D1C2};
+		this.tri6 = new int [][] {this.B1, this.E3, this.D2C2};
+		this.tri7 = new int [][] {this.B2, this.E2, this.D2C2};
+		this.tri8 = new int [][] {this.B2, this.E3, this.D1C2};
+		
+		 this.tri9 = new int [][] {this.C1, this.E3, this.D1C3};
+		this.tri10 = new int [][] {this.C1, this.E4, this.D2C3};
+		this.tri11 = new int [][] {this.C2, this.E3, this.D2C3};
+		this.tri12 = new int [][] {this.C2, this.E4, this.D1C3};
+		
+		this.tri13 = new int [][] {this.D1, this.E4, this.D1C4};
+		this.tri14 = new int [][] {this.D1, this.E5, this.D2C4};
+		this.tri15 = new int [][] {this.D2, this.E4, this.D2C4};
+		this.tri16 = new int [][] {this.D2, this.E5, this.D1C4};
+		
+		//Segunda fila
+		this.tri17 = new int [][] {this.A2, this.F1, this.D1C5};
+		this.tri18 = new int [][] {this.A2, this.F2, this.D2C5};
+		this.tri19 = new int [][] {this.A3, this.F1, this.D2C5};
+		this.tri20 = new int [][] {this.A3, this.F2, this.D1C5};
+		
+		this.tri21 = new int [][] {this.B2, this.F2, this.D1C6};
+		this.tri22 = new int [][] {this.B2, this.F3, this.D2C6};
+		this.tri23 = new int [][] {this.B3, this.F2, this.D2C6};
+		this.tri24 = new int [][] {this.B3, this.F3, this.D1C6};
+		
+		this.tri25 = new int [][] {this.C2, this.F3, this.D1C7};
+		this.tri26 = new int [][] {this.C2, this.F4, this.D2C7};
+		this.tri27 = new int [][] {this.C3, this.F3, this.D2C7};
+		this.tri28 = new int [][] {this.C3, this.F4, this.D1C7};
+		
+		this.tri29 = new int [][] {this.D2, this.F4, this.D1C8};
+		this.tri30 = new int [][] {this.D2, this.F5, this.D2C8};
+		this.tri31 = new int [][] {this.D3, this.F4, this.D2C8};
+		this.tri32 = new int [][] {this.D3, this.F5, this.D1C8};
+		
+		//Tercera fila
+		this.tri33 = new int [][] {this.A3, this.G1, this.D1C9};
+		this.tri34 = new int [][] {this.A3, this.G2, this.D2C9};
+		this.tri35 = new int [][] {this.A4, this.G1, this.D2C9};
+		this.tri36 = new int [][] {this.A4, this.G2, this.D1C9};
+		
+		this.tri37 = new int [][] {this.B3, this.G2, this.D1C10};
+		this.tri38 = new int [][] {this.B3, this.G3, this.D2C10};
+		this.tri39 = new int [][] {this.B4, this.G2, this.D2C10};
+		this.tri40 = new int [][] {this.B4, this.G3, this.D1C10};
+		
+		this.tri41 = new int [][] {this.C3, this.G3, this.D1C11};
+		this.tri42 = new int [][] {this.C3, this.G4, this.D2C11};
+		this.tri43 = new int [][] {this.C4, this.G3, this.D2C11};
+		this.tri44 = new int [][] {this.C4, this.G4, this.D1C11};
+		
+		this.tri45 = new int [][] {this.D3, this.G4, this.D1C12};
+		this.tri46 = new int [][] {this.D3, this.G5, this.D2C12};
+		this.tri47 = new int [][] {this.D4, this.G4, this.D2C12};
+		this.tri48 = new int [][] {this.D4, this.G5, this.D1C12};
+		
+		//Cuarta fila
+		this.tri49 = new int [][] {this.A4, this.H1, this.D1C13};
+		this.tri50 = new int [][] {this.A4, this.H2, this.D2C13};
+		this.tri51 = new int [][] {this.A5, this.H1, this.D2C13};
+		this.tri52 = new int [][] {this.A5, this.H2, this.D1C13};
+		
+		this.tri53 = new int [][] {this.B4, this.H2, this.D1C14};
+		this.tri54 = new int [][] {this.B4, this.H3, this.D2C14};
+		this.tri55 = new int [][] {this.B5, this.H2, this.D2C14};
+		this.tri56 = new int [][] {this.B5, this.H3, this.D1C14};
+		
+		this.tri57 = new int [][] {this.C4, this.H3, this.D1C15};
+		this.tri58 = new int [][] {this.C4, this.H4, this.D2C15};
+		this.tri59 = new int [][] {this.C5, this.H3, this.D2C15};
+		this.tri60 = new int [][] {this.C5, this.H4, this.D1C15};
+		
+		this.tri61 = new int [][] {this.D4, this.H4, this.D1C16};
+		this.tri62 = new int [][] {this.D4, this.H5, this.D2C16};
+		this.tri63 = new int [][] {this.D5, this.H4, this.D2C16};
+		this.tri64 = new int [][] {this.D5, this.H5, this.D1C16};
+		
+		this.todosLosTriang = new int[][][] {this.tri1, this.tri2, this.tri3, this.tri4, this.tri5, 
+			this.tri6, this.tri7, this.tri8, this.tri9, this.tri10, this.tri11, this.tri12, this.tri13, 
+			this.tri14, this.tri15, this.tri16, this.tri17, this.tri18, this.tri19, this.tri20, this.tri21, 
+			this.tri22, this.tri23, this.tri24, this.tri25, this.tri26, this.tri27, this.tri28, this.tri29, 
+			this.tri30, this.tri31, this.tri32, this.tri33, this.tri34, this.tri35, this.tri36, this.tri37, 
+			this.tri38, this.tri39, this.tri40, this.tri41, this.tri42, this.tri43, this.tri44, this.tri45, 
+			this.tri46, this.tri47, this.tri48, this.tri49, this.tri50, this.tri51, this.tri52, this.tri53, 
+			this.tri54, this.tri55, this.tri56, this.tri57, this.tri58, this.tri59, this.tri60, this.tri61, 
+			this.tri62};
+	}
+	
 	public void organizarCuadrados() {
 		this.cuad1 = new int[][] {this.A1, this.E1, this. A2, this. E2};
 		this.cuad2 = new int[][] {this.B1, this.E2, this. B2, this. E3};
@@ -148,7 +253,48 @@ public class BoardLogic implements MouseListener{
 		this.F5 = new int[]{0,130, 10, 220, 10};
 		this.G5 = new int[]{0,230,10,320,10};
 		this.H5 = new int[]{0,330,10,420,10};
-	}
+		
+		//Diagonales
+		this.D1C1 = new int[]{0,30, 10, 120, 10};
+		this.D2C1 = new int[]{0,130, 10, 220, 10};
+		this.D1C2 = new int[]{0,230,10,320,10};
+		this.D2C2 = new int[]{0,330,10,420,10};
+
+		this.D1C3 = new int[]{0,30, 10, 120, 10};
+		this.D2C3 = new int[]{0,130, 10, 220, 10};
+		this.D1C4 = new int[]{0,230,10,320,10};
+		this.D2C4 = new int[]{0,330,10,420,10};
+
+		this.D1C5 = new int[]{0,30, 10, 120, 10};
+		this.D2C5 = new int[]{0,130, 10, 220, 10};
+		this.D1C6 = new int[]{0,230,10,320,10};
+		this.D2C6 = new int[]{0,330,10,420,10};
+
+		this.D1C7 = new int[]{0,30, 10, 120, 10};
+		this.D2C7 = new int[]{0,130, 10, 220, 10};
+		this.D1C8 = new int[]{0,230,10,320,10};
+		this.D2C8 = new int[]{0,330,10,420,10};
+
+		this.D1C9 = new int[]{0,30, 10, 120, 10};
+		this.D2C9 = new int[]{0,130, 10, 220, 10};
+		this.D1C10 = new int[]{0,230,10,320,10};
+		this.D2C10 = new int[]{0,330,10,420,10};
+
+		this.D1C11 = new int[]{0,30, 10, 120, 10};
+		this.D2C11 = new int[]{0,130, 10, 220, 10};
+		this.D1C12 = new int[]{0,230,10,320,10};
+		this.D2C12 = new int[]{0,330,10,420,10};
+
+		this.D1C13 = new int[]{0,30, 10, 120, 10};
+		this.D2C13 = new int[]{0,130, 10, 220, 10};
+		this.D1C14 = new int[]{0,230,10,320,10};
+		this.D2C14 = new int[]{0,330,10,420,10};
+
+		this.D1C15 = new int[]{0,30, 10, 120, 10};
+		this.D2C15 = new int[]{0,130, 10, 220, 10};
+		this.D1C16 = new int[]{0,230,10,320,10};
+		this.D2C16 = new int[]{0,330,10,420,10};		
+		}
 	
 	public void awardRightfulPoints() {
 		if(this.p1.getHasTurn()) {
@@ -161,9 +307,10 @@ public class BoardLogic implements MouseListener{
 
 	@Override
 	public void mouseClicked(java.awt.event.MouseEvent e) {
+		//Horizontales
+
 		//Estos corresponden a las coordenadas de los arreglos en crearLineas()
-				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30))
-				{
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
 					if(matrix.viewValue(1, 0) == 0){
 						//Cambia el color de la línea al color del jugador
 						this.A1[0] = this.lineColor;
@@ -175,7 +322,171 @@ public class BoardLogic implements MouseListener{
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(3, 0) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(3, 0, 1);
 						
+						if(this.tb.checkIsScore(this.cuad2)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(5, 0) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(5, 0, 1);
+						
+						if(this.tb.checkIsScore(this.cuad1)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(7, 0) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(7, 0, 1);
+						
+						if(this.tb.checkIsScore(this.cuad1)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(1, 2) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(1, 2, 1);
+						
+						if(this.tb.checkIsScore(this.cuad1)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(3, 2) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(3, 2, 1);
+						
+						if(this.tb.checkIsScore(this.cuad2)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(5, 2) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(5, 2, 1);
+						
+						if(this.tb.checkIsScore(this.cuad1)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(7, 2) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(7, 2, 1);
+						
+						if(this.tb.checkIsScore(this.cuad1)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(1, 4) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(1, 4, 1);
+						
+						if(this.tb.checkIsScore(this.cuad1)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(3, 4) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(3, 4, 1);
+						
+						if(this.tb.checkIsScore(this.cuad2)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(5, 4) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(5, 4, 1);
+						
+						if(this.tb.checkIsScore(this.cuad1)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+					if(matrix.viewValue(7, 4) == 0){
+						//Cambia el color de la línea al color del jugador
+						this.A1[0] = this.lineColor;
+						matrix.changeValue(7, 4, 1);
+						
+						if(this.tb.checkIsScore(this.cuad1)) {
+							awardRightfulPoints();
+						}else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
 					}
 				}
 		

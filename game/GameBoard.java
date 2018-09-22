@@ -57,8 +57,6 @@ public class GameBoard extends JPanel implements MouseListener{
 		organizeBoxes();
 		this.addMouseListener(this);
 		
-		
-		
 		super.repaint();
 		
 		this.p1	= new Player("Perro",1);
@@ -296,15 +294,15 @@ public class GameBoard extends JPanel implements MouseListener{
 		//////////////////////////////////////
 		//Top
 		
-		//A1
-		//if((30 < e.getX()) && (e.getX() < 115) && (5 < e.getY()) && (e.getY() < 15))
 		if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30))
 		{
-			if(this.A1[0] == 0)
+			if(matrix.viewValue(0, 0) == 0 || matrix.viewValue(1, 0) == 0)
 			{
 				this.A1[0] = this.lineColor;
-				
-				
+				matrix.changeValue(0, 0, 1);
+				matrix.changeValue(1, 0, 1);
+				//quitar esto de abajo
+				matrix.printMatrix();
 				if(this.tb.checkIsScore(this.box1))
 				{
 					awardRightfulPoints();
@@ -314,23 +312,20 @@ public class GameBoard extends JPanel implements MouseListener{
 					this.p1.switchTurn();
 					this.p2.switchTurn();
 					this.switchPointers();
-					
 				}
-				
 			}
-			
-			
-			
-			
-			
 		}
 		//B1
 		if((135 < e.getX()) && (e.getX() < 215) && (0 < e.getY()) && (e.getY() < 30))
 		{
 			
-			if(this.B1[0] == 0)
+			if(matrix.viewValue(1, 0) == 0 || matrix.viewValue(2, 0)== 0)
 			{
 				this.B1[0] = this.lineColor;
+				matrix.changeValue(1,0, 1);
+				matrix.changeValue(2, 0, 1);
+				//quitar esto de abajo
+				matrix.printMatrix();
 				if(this.tb.checkIsScore(this.box2))
 				{
 					awardRightfulPoints();
@@ -348,9 +343,12 @@ public class GameBoard extends JPanel implements MouseListener{
 		//C1
 		if((235 < e.getX()) && (e.getX() < 315) && (0 < e.getY()) && (e.getY() < 30))
 		{
-			if(this.C1[0] == 0)
+			if(matrix.viewValue(2, 0) == 0 || matrix.viewValue(3, 0)== 0)
 			{
 				this.C1[0] = this.lineColor;
+				matrix.changeValue(2, 0, 1);
+				matrix.changeValue(3, 0, 1);
+				matrix.printMatrix();
 				if(this.tb.checkIsScore(this.box3))
 				{
 					awardRightfulPoints();
@@ -368,9 +366,12 @@ public class GameBoard extends JPanel implements MouseListener{
 		//D1
 		if((335 < e.getX()) && (e.getX() < 415) && (0 < e.getY()) && (e.getY() < 30))
 		{
-			if(this.D1[0] == 0)
+			if(matrix.viewValue(3, 0) == 0 || matrix.viewValue(4, 0)== 0)
 			{
 				this.D1[0] = this.lineColor;
+				matrix.changeValue(3, 0, 1);
+				matrix.changeValue(4, 0, 1);
+				matrix.printMatrix();
 				if(this.tb.checkIsScore(this.box4))
 				{
 					awardRightfulPoints();
@@ -392,10 +393,12 @@ public class GameBoard extends JPanel implements MouseListener{
 		//J1
 		if((30 < e.getX()) && (e.getX() < 115) && (100 < e.getY()) && (e.getY() < 130))
 		{
-			if(this.J1[0] == 0)
+			if(matrix.viewValue(0, 1) == 0 || matrix.viewValue(1, 1)== 0)
 			{
 				this.J1[0] = this.lineColor;
-				
+				matrix.changeValue(0, 1, 1);
+				matrix.changeValue(1, 1, 1);
+				matrix.printMatrix();
 				if(this.tb.checkIsScore(this.box1))
 				{
 					awardRightfulPoints();
@@ -420,9 +423,12 @@ public class GameBoard extends JPanel implements MouseListener{
 		//K1
 		if((135 < e.getX()) && (e.getX() < 215) && (100 < e.getY()) && (e.getY() < 130))
 		{
-			if(this.K1[0] == 0)
+			if(matrix.viewValue(1, 1) == 0 || matrix.viewValue(2, 1)== 0)
 			{
 				this.K1[0] = this.lineColor;
+				matrix.changeValue(1, 1, 1);
+				matrix.changeValue(2, 1, 1);
+				
 				if(this.tb.checkIsScore(this.box2))
 				{
 					awardRightfulPoints();
@@ -445,9 +451,11 @@ public class GameBoard extends JPanel implements MouseListener{
 		//L1
 		if((235 < e.getX()) && (e.getX() < 315) && (100 < e.getY()) && (e.getY() < 130))
 		{
-			if(this.L1[0] == 0)
+			if(matrix.viewValue(2, 1) == 0 || matrix.viewValue(3, 1)== 0)
 			{
 				this.L1[0] = this.lineColor;
+				matrix.changeValue(2, 1, 1);
+				matrix.changeValue(3, 1, 1);
 				if(this.tb.checkIsScore(this.box3))
 				{
 					awardRightfulPoints();
@@ -471,9 +479,12 @@ public class GameBoard extends JPanel implements MouseListener{
 		//M1
 		if((335 < e.getX()) && (e.getX() < 415) && (100 < e.getY()) && (e.getY() < 130))
 		{
-			if(this.M1[0] == 0)
+			if(matrix.viewValue(3, 1) == 0 || matrix.viewValue(4, 1)== 0)
 			{
 				this.M1[0] = this.lineColor;
+				matrix.changeValue(3, 1, 1);
+				matrix.changeValue(4, 1, 1);
+				matrix.printMatrix();
 				if(this.tb.checkIsScore(this.box4))
 				{
 					awardRightfulPoints();
@@ -499,9 +510,11 @@ public class GameBoard extends JPanel implements MouseListener{
 		if((30 < e.getX()) && (e.getX() < 115) && (200 < e.getY()) && (e.getY() < 230))
 		{
 			
-			if(this.S1[0] == 0)
+			if(matrix.viewValue(0, 2) == 0 || matrix.viewValue(1, 2)== 0)
 			{
 				this.S1[0] = this.lineColor;
+				matrix.changeValue(0, 2, 1);
+				matrix.changeValue(1, 2, 1);
 				if(this.tb.checkIsScore(this.box5))
 				{
 					awardRightfulPoints();
@@ -524,9 +537,11 @@ public class GameBoard extends JPanel implements MouseListener{
 		//T1
 		if((135 < e.getX()) && (e.getX() < 215) && (200 < e.getY()) && (e.getY() < 230))
 		{
-			if(this.T1[0] == 0)
+			if(matrix.viewValue(1, 2) == 0 || matrix.viewValue(2, 2)== 0)
 			{
 				this.T1[0] = this.lineColor;
+				matrix.changeValue(1, 2, 1);
+				matrix.changeValue(2, 2, 1);
 				if(this.tb.checkIsScore(this.box6))
 				{
 					awardRightfulPoints();
@@ -550,10 +565,11 @@ public class GameBoard extends JPanel implements MouseListener{
 		//U1
 		if((235 < e.getX()) && (e.getX() < 315) && (200 < e.getY()) && (e.getY() < 230))
 		{
-			if(this.U1[0] == 0)
+			if(matrix.viewValue(2, 2) == 0 || matrix.viewValue(3, 2)== 0)
 			{
 				this.U1[0] = this.lineColor;
-				
+				matrix.changeValue(2, 2, 1);
+				matrix.changeValue(3, 2, 1);
 				if(this.tb.checkIsScore(this.box7))
 				{
 					awardRightfulPoints();
@@ -579,10 +595,12 @@ public class GameBoard extends JPanel implements MouseListener{
 		//V1
 		if((335 < e.getX()) && (e.getX() < 415) && (200 < e.getY()) && (e.getY() < 230))
 		{
-			if(this.V1[0] == 0)
+			if(matrix.viewValue(3, 2) == 0 || matrix.viewValue(4, 2)== 0)
 			{
 				this.V1[0] = this.lineColor;
-				
+				matrix.changeValue(3, 2, 1);
+				matrix.changeValue(4, 2, 1);
+				matrix.printMatrix();
 				if(this.tb.checkIsScore(this.box8))
 				{
 					awardRightfulPoints();
