@@ -1,4 +1,7 @@
-package game;
+package logic;
+
+import game.Player;
+
 public class TurnBaseB{
 	BoardLogic bl;
 	boolean gameOver = false;
