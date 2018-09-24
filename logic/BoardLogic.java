@@ -28,6 +28,7 @@ public class BoardLogic implements MouseListener{
 	//Todos los posibles triángulos
 	int[][] tri1,tri2,tri3,tri4,tri5,tri6,tri7,tri8,tri9,tri10,tri11,tri12,tri13,tri14,tri15,tri16,tri17,tri18,tri19,tri20,tri21,tri22,tri23,tri24,tri25,tri26,tri27,tri28,tri29,tri30,tri31,tri32;
 	int[][] tri33,tri34,tri35,tri36,tri37,tri38,tri39,tri40,tri41,tri42,tri43,tri44,tri45,tri46,tri47,tri48,tri49,tri50,tri51,tri52,tri53,tri54,tri55,tri56,tri57,tri58,tri59,tri60,tri61,tri62,tri63,tri64;
+	//Donde se guarda todo
 	int[][][] todosLosTriang;
 	int[][][] todasLasCajas;
 	
@@ -1431,6 +1432,10 @@ public class BoardLogic implements MouseListener{
 					}
 				}
 				
+				if(this.tb.checkGameOver(this.todasLasCajas, this.todasLasCajas))
+				{
+					System.out.println("Game over");
+				}
 	}
 
 

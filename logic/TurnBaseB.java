@@ -34,8 +34,22 @@ public class TurnBaseB{
 		
 	}
 	
-	public boolean checkGameOver(int[][][] allBoxes)
+	
+	public boolean checkGameOver(int[][][] allBoxes, int[][][] allTriang)
 	{
+		
+		for(int i = 0; i < allTriang.length; i++)
+		{
+			for(int x = 0; x < allTriang[i].length; x++)
+			{
+				
+					if(allTriang[i][x][0] == 0)
+					{
+						return false;
+					}
+				
+			}
+		}
 		
 		for(int i = 0; i < allBoxes.length; i++)
 		{
