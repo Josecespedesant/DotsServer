@@ -8,7 +8,12 @@ public class TurnBaseB{
 	Player p1;
 	Player p2;
 	
-	//Constructor
+	/**
+	 * Constructor de la clase TurnBaseB que recibe como parámetros la lógica del juego y ambos jugadores.
+	 * @param bl
+	 * @param p1
+	 * @param p2
+	 */
 	public TurnBaseB(BoardLogic bl, Player p1, Player p2)
 	{
 		this.bl = bl;
@@ -21,6 +26,11 @@ public class TurnBaseB{
 		
 	}
 	
+	/**
+	 * Método que verifica si el un cuadrado se terminó de cerrar.
+	 * @param box
+	 * @return true si el cuadrado se cierra y false si aún no.
+	 */
 	public boolean checkIsScore(int[][] box)
 	{
 		for(int i = 0; i < box.length; i++)
@@ -34,7 +44,12 @@ public class TurnBaseB{
 		
 	}
 	
-	
+	/**
+	 * Método que verifica si se terminó el juego.
+	 * @param allBoxes
+	 * @param allTriang
+	 * @return true si ya todas las líneas se usaron y false si aún no.
+	 */
 	public boolean checkGameOver(int[][][] allBoxes, int[][][] allTriang)
 	{
 		

@@ -6,11 +6,14 @@ import game.Player;
 import matrix.Matrix;
 
 /**
- * Lógica del juego Dots
+ * Lógica del juego Dots.
  * @author Jose Antonio
  *
  */
 public class BoardLogic implements MouseListener{
+	/**
+	 * Atributos de la clase BoardLogic
+	 */
 	Matrix matrix = new Matrix(9,9,0);
 	Player p1;
 	Player p2;
@@ -35,14 +38,20 @@ public class BoardLogic implements MouseListener{
 	//Esto sirve para cambiar el color de la línea
 	private int lineColor;
 	
+	/**
+	 * Constructor de la clase BoardLogic que maneja toda la lógica detrás del juego.
+	 */
 	public BoardLogic() {
+		//Genera dos nuevos jugadores.
 		this.p1 = new Player("Perro", 1);
 		this.p2 = new Player("Gato", 2);
+		//Define las distintas figuras posibles.
 		organizarCuadrados();
 		organizarTriangulos();
+		//Crea las líneas en la interfaz.
 		crearLineas();
 		
-		//Genera los "puntos" de la matriz
+		//Genera los "puntos" de la matriz.
 		matrix.changeValue(0, 0, 1);
 		matrix.changeValue(2, 0, 1);
 		matrix.changeValue(4, 0, 1);
@@ -74,9 +83,13 @@ public class BoardLogic implements MouseListener{
 		matrix.changeValue(8, 8, 1);
 		matrix.printMatrix();
 		
+		//Lleva el control de puntos y cuándo termina el juego
 		this.tb = new TurnBaseB(this,p1,p2);
 	}
 
+	/**
+	 * Método que determina los distintos triángulos posibles.
+	 */
 	public void organizarTriangulos() {
 		//Primera fila
 		this.tri1 = new int [][] {this.A1, this.E1, this.D1C1};
@@ -162,6 +175,7 @@ public class BoardLogic implements MouseListener{
 		this.tri63 = new int [][] {this.D5, this.H4, this.D2C16};
 		this.tri64 = new int [][] {this.D5, this.H5, this.D1C16};
 		
+		//Todos los posibles triángulos.
 		this.todosLosTriang = new int[][][] {this.tri1, this.tri2, this.tri3, this.tri4, this.tri5, 
 			this.tri6, this.tri7, this.tri8, this.tri9, this.tri10, this.tri11, this.tri12, this.tri13, 
 			this.tri14, this.tri15, this.tri16, this.tri17, this.tri18, this.tri19, this.tri20, this.tri21, 
@@ -173,6 +187,9 @@ public class BoardLogic implements MouseListener{
 			this.tri62};
 	}
 	
+	/**
+	 * Método que organiza todos los posibles cuadrados.
+	 */
 	public void organizarCuadrados() {
 		this.cuad1 = new int[][] {this.A1, this.E1, this. A2, this. E2};
 		this.cuad2 = new int[][] {this.B1, this.E2, this. B2, this. E3};
@@ -194,6 +211,7 @@ public class BoardLogic implements MouseListener{
 		this.cuad15 = new int[][] {this.C4, this.H3, this. C5, this. H4};
 		this.cuad16 = new int[][] {this.D4, this.H4, this. D5, this. H5};
 		
+		//Todos los posibles cuadrados.
 		this.todasLasCajas = new int[][][] {this.cuad1, this.cuad2, this.cuad3, 
 			this.cuad4, this.cuad5, this.cuad6, 
 			this.cuad7, this.cuad8, this.cuad9, 
@@ -202,6 +220,9 @@ public class BoardLogic implements MouseListener{
 	
 	}
 	
+	/**
+	 * Método que crea las distintas lineas que estarán en pantalla.
+	 */
 	public void crearLineas() {
 		
 		//Estructura del arreglo: 
@@ -301,6 +322,9 @@ public class BoardLogic implements MouseListener{
 		this.D2C16 = new int[]{0,330,10,420,10};		
 		}
 	
+	/**
+	 * Método que otorga los puntos dependiendo del jugador.
+	 */
 	public void awardRightfulPoints() {
 		if(this.p1.getHasTurn()) {
 			this.p1.scorePoints();
@@ -310,6 +334,9 @@ public class BoardLogic implements MouseListener{
 		}
 	}
 
+	/**
+	 * Método que controla cuándo un jugador pulsa una linea.
+	 */
 	@Override
 	public void mouseClicked(java.awt.event.MouseEvent e) {
 		//Horizontales
