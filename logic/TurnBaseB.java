@@ -2,6 +2,11 @@ package logic;
 
 import game.Player;
 
+/**
+ * Declaración de la clase TurnBaseB.
+ * @author José Antonio
+ *
+ */
 public class TurnBaseB{
 	BoardLogic bl;
 	boolean gameOver = false;
