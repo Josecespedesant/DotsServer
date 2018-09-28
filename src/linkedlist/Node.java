@@ -1,7 +1,7 @@
 package linkedlist;
 
 /**
- * Clase que representa un nodo parte de una lista enlazada.
+ * LinkedList
  *
  * @author David Azofeifa Herrera.
  * @param <T>
