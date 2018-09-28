@@ -16,18 +16,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="jackson-all-1.9.0.jar">
+      <library>
         <CLASSES>
-          <root url="file://C:/Users/PC/Desktop/jackson-all-1.9.0.jar" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="json-simple-1.1.jar">
-        <CLASSES>
-          <root url="file://C:/Users/PC/Desktop/json-simple-1.1.jar" />
+          <root url="jar://$MODULE_DIR$/libs/json-simple-1.1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

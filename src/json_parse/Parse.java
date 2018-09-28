@@ -37,7 +37,7 @@ public class Parse {
             JSONArray temp = new JSONArray();
             Node tempNode2 = ((LinkedList) tempNode1.getData()).getHead();
             for (int j=0; j < matrix.getColumns(); j++) {
-               temp.add(tempNode2.getData());
+                temp.add(tempNode2.getData());
                 tempNode2 = tempNode2.getNext();
             }
             _matrix.add(temp);
@@ -51,8 +51,8 @@ public class Parse {
      * Decodes a JSONObject instance into a Matrix Instance.
      *
      * @param jsonDoc, JSONObject instance
-    * @return Matrix instance
-    */
+     * @return Matrix instance
+     */
     public Matrix JsonToMatrix(JSONObject jsonDoc) {
         //TODO: improve
         int scorePlayer1 = 0;
