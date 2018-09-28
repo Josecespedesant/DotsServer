@@ -1,7 +1,5 @@
 package logic;
 
-import game.Player;
-
 /**
  * Declaración de la clase TurnBaseB.
  * @author José Antonio

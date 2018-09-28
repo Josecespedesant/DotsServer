@@ -1,4 +1,4 @@
-package game;
+package logic;
 
 /**
  * Player class

@@ -2,7 +2,6 @@ package logic;
 
 import java.awt.event.MouseListener;
 
-import game.Player;
 import matrix.Matrix;
 
 /**

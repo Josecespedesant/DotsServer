@@ -16,9 +16,9 @@ import queue.LinkedQueue;
  
 /** 
  * This thread is responsible to handle client connection.
- *
  * @author www.codejava.net
  */
+
 public class ServerThread extends Thread {
  //Attribute of the class ServerThread
     private Socket socket;
