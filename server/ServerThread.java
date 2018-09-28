@@ -55,6 +55,7 @@ public class ServerThread extends Thread {
             ex.printStackTrace();
         }
     }
+    
     public void received() throws IOException, ParseException {
     	BufferedReader brs = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     	try{
