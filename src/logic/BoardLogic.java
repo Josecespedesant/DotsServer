@@ -83,7 +83,7 @@ public class BoardLogic implements MouseListener{
 		matrix.printMatrix();
 		
 		//Lleva el control de puntos y cu�ndo termina el juego
-		this.tb = new TurnBaseB(this,p1,p2);
+		//this.tb = new TurnBaseB(this,p1,p2);
 	}
 
 	/**

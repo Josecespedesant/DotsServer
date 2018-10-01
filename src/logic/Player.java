@@ -46,8 +46,12 @@ public class Player {
     	return this.hasTurn;
     }
     
-    public void scorePoints() {
-    	this.score += 1;
+    public void scoreSquarePoints() {
+    	this.score += 8;
+    }
+    
+    public void scoreTriPoints() {
+    	this.score += 6;
     }
     
     public int getScore() {

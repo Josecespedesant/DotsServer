@@ -5,7 +5,7 @@ package logic;
  *
  */
 public class TurnBaseB{
-	BoardLogic bl;
+	Logic bl;
 	boolean gameOver = false;
 	Player p1;
 	Player p2;
@@ -16,7 +16,7 @@ public class TurnBaseB{
 	 * @param p1
 	 * @param p2
 	 */
-	public TurnBaseB(BoardLogic bl, Player p1, Player p2)
+	public TurnBaseB(Logic bl, Player p1, Player p2)
 	{
 		this.bl = bl;
 		this.p1 = p1;
@@ -33,8 +33,8 @@ public class TurnBaseB{
 	 * @param box
 	 * @return
 	 */
-	public boolean checkIsScore(int[][] box)
-	{
+	public boolean checkIsScore(int[][] box) {
+		
 		for(int i = 0; i < box.length; i++)
 		{
 			if(box[i][0] == 0)
@@ -45,7 +45,17 @@ public class TurnBaseB{
 		return true;
 		
 	}
-	
+
+	public boolean checkIsScoreTri(int[][] tri) {
+		for(int i = 0; i < tri.length; i++)
+		{
+			if(tri[i][0] == 0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 	/**
 	 * Checks if game is over
 	 * @param allBoxes
