@@ -1,5 +1,7 @@
 package logic;
 
+import linkedlist.LinkedList;
+
 import matrix.Matrix;
 import linkedlist.LinkedList;
 
@@ -8,14 +10,13 @@ public class Logic {
 	Player p1;
 	Player p2;
 	TurnBaseB tb;
-	
 	// Horizontal Lines
 	int[] A1, B1, C1, D1, A2, B2, C2, D2, A3, B3, C3, D3, A4, B4, C4, D4, A5, B5, C5, D5;
 	// Vertical Lines
 	int[] E1, F1, G1, H1, E2, F2, G2, H2, E3, F3, G3, H3, E4, F4, G4, H4, E5, F5, G5, H5;
 	// Diagonal Lines (Diagonal N del Cuadro M, si es D1 = / si es D2 = \)
-	int[] D1C1, D2C1, D1C2, D2C2,D1C3, D2C3,D1C4, D2C4,D1C5, D2C5,D1C6, 
-	D2C6,D1C7, D2C7,D1C8, D2C8,D1C9, D2C9,D1C10, D2C10,D1C11, D2C11,D1C12, 
+	int[] D1C1, D2C1, D1C2, D2C2,D1C3, D2C3,D1C4, D2C4,D1C5, D2C5,D1C6,
+	D2C6,D1C7, D2C7,D1C8, D2C8,D1C9, D2C9,D1C10, D2C10,D1C11, D2C11,D1C12,
 	D2C12,D1C13, D2C13,D1C14, D2C14,D1C15, D2C15,D1C16, D2C16;
 	//Todos los posibles cuadrados
 	int[][] cuad1,cuad2,cuad3,cuad4,cuad5,cuad6,cuad7,cuad8,cuad9,cuad10,cuad11,cuad12,cuad13,cuad14,cuad15,cuad16;
@@ -25,7 +26,8 @@ public class Logic {
 	// Where everything is saved
 	int[][][] todosLosTriang;
 	int[][][] todasLasCajas;
-	
+	PintaCuad pintacuad  = new PintaCuad();
+	PintaTri pintatri = new PintaTri();
 	public Logic(Player p1, Player p2) {
 		this.p1 = p1;
 		this.p2 = p2;
@@ -193,7 +195,7 @@ public class Logic {
 			this.cuad13, this.cuad14, this.cuad15, this.cuad16};
 	
 	}
-	
+
 	public void awardSquarePoints() {
 		if(this.p1.getHasTurn()) {
 			this.p1.scoreSquarePoints();
@@ -212,8 +214,13 @@ public class Logic {
 			this.p2.scoreTriPoints();
 		}
 	}
+
 	
+<<<<<<< HEAD
 	public void modifyMatrix(LinkedList posiciones, int lineColor) {
+=======
+	public void modifyMatrix(LinkedList<Integer> posiciones, int lineColor) {
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/DotsServer.git
 		//Horizontales
 		
 		int posX = (int) posiciones.getHead().getData();
@@ -228,20 +235,24 @@ public class Logic {
 						this.A1[0] = lineColor;
 						//We also change the value on the matrix so it can't be modified with this iteration again
 						matrix.changeValue(1, 0, 1);
-						
 						//If the line is used to enclose a square, it awards 8 points to the player who made it
 						if(this.tb.checkIsScore(this.cuad1)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr1(this.matrix);
 						//If the line is used to enclose a triangle, it awards 6 points to the player who made it
 						} else if(this.tb.checkIsScoreTri(tri1) || this.tb.checkIsScoreTri(tri2)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri1)) {
+								this.pintatri.tria1(matrix);
+								
+							} else if(this.tb.checkIsScoreTri(tri2)){
+								this.pintatri.tria2(matrix);
 						} else {
 							//If nothing of that happens, it only switches the players turn
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
-					
 					//And all of those comments are valid for the rest of the verifications
 				}
 				
@@ -250,11 +261,17 @@ public class Logic {
 					if(matrix.viewValue(3, 0) == 0){
 						this.B1[0] = lineColor;
 						matrix.changeValue(3, 0, 1);
-						
 						if(this.tb.checkIsScore(this.cuad2)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr2(matrix);
 						} else if(this.tb.checkIsScoreTri(tri5)||this.tb.checkIsScoreTri(tri6)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri5)) {
+								this.pintatri.tria5(matrix);
+								
+							} else if(this.tb.checkIsScoreTri(tri6)){
+								this.pintatri.tria6(matrix);
+						}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -270,8 +287,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad3)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr3(matrix);
 						} else if(this.tb.checkIsScoreTri(tri9)||this.tb.checkIsScoreTri(tri10)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri9)) {
+								this.pintatri.tria9(matrix);
+								
+							} else if(this.tb.checkIsScoreTri(tri10)){
+								this.pintatri.tria10(matrix);
+						}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -287,13 +311,19 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad4)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr4(matrix);
 						} else if(this.tb.checkIsScoreTri(tri13)||this.tb.checkIsScoreTri(tri14)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri13)) {
+								this.pintatri.tria13(matrix);
+								
+							} else if(this.tb.checkIsScoreTri(tri14)){
+								this.pintatri.tria14(matrix);
+						}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					
 					}
 				}
 				
@@ -304,8 +334,24 @@ public class Logic {
 						matrix.changeValue(1, 2, 1);
 						if(this.tb.checkIsScore(this.cuad1)||this.tb.checkIsScore(this.cuad5)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad1)) {
+								this.pintacuad.cuadr1(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad5)){
+								this.pintacuad.cuadr5(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri3)||this.tb.checkIsScoreTri(tri4)||this.tb.checkIsScoreTri(tri17)||this.tb.checkIsScoreTri(tri18)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri3)) {
+								this.pintatri.tria3(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri4)){
+								this.pintatri.tria4(matrix);
+							} else if(this.tb.checkIsScoreTri(tri17)) {
+								this.pintatri.tria17(matrix);
+							} else if(this.tb.checkIsScoreTri(tri18)) {
+								this.pintatri.tria18(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -320,8 +366,24 @@ public class Logic {
 						matrix.changeValue(3, 2, 1);
 						if(this.tb.checkIsScore(this.cuad2)||this.tb.checkIsScore(this.cuad6)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad2)) {
+								this.pintacuad.cuadr2(matrix);
+							} else if(this.tb.checkIsScore(this.cuad6)){
+								this.pintacuad.cuadr6(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri7)||this.tb.checkIsScoreTri(tri8)||this.tb.checkIsScoreTri(tri21)||this.tb.checkIsScoreTri(tri22)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri7)) {
+								this.pintatri.tria7(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri8)){
+								this.pintatri.tria8(matrix);
+							} else if(this.tb.checkIsScoreTri(tri21)) {
+								this.pintatri.tria21(matrix);
+							} else if(this.tb.checkIsScoreTri(tri22)) {
+								this.pintatri.tria22(matrix);
+							}
+						}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -336,14 +398,30 @@ public class Logic {
 						matrix.changeValue(5, 2, 1);
 						if(this.tb.checkIsScore(this.cuad3)||this.tb.checkIsScore(this.cuad7)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad3)) {
+								this.pintacuad.cuadr3(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad7)){
+								this.pintacuad.cuadr7(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri11)||this.tb.checkIsScoreTri(tri12)||this.tb.checkIsScoreTri(tri25)||this.tb.checkIsScoreTri(tri26)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri11)) {
+								this.pintatri.tria11(matrix);
+							} else if(this.tb.checkIsScoreTri(tri12)){
+								this.pintatri.tria12(matrix);
+							} else if(this.tb.checkIsScoreTri(tri25)) {
+								this.pintatri.tria25(matrix);
+							} else if(this.tb.checkIsScoreTri(tri26)) {
+								this.pintatri.tria26(matrix);
+							}
+						}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
-				}
+				
 				
 				//D2
 				if((D2[1] < posX) && (posX < D2[2]) && (D2[3] < posY) && (posY < D2[4])){
@@ -353,14 +431,31 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad4)||this.tb.checkIsScore(this.cuad8)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad4)) {
+								this.pintacuad.cuadr4(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad8)){
+								this.pintacuad.cuadr8(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri15)||this.tb.checkIsScoreTri(tri16)||this.tb.checkIsScoreTri(tri29)||this.tb.checkIsScoreTri(tri30)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri15)) {
+								this.pintatri.tria15(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri16)){
+								this.pintatri.tria16(matrix);
+							} else if(this.tb.checkIsScoreTri(tri29)) {
+								this.pintatri.tria29(matrix);
+							} else if(this.tb.checkIsScoreTri(tri30)) {
+								this.pintatri.tria30(matrix);
+							}
+						}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
-				}
+				
 				
 				//A3
 				if((30 < posX) && (posX < 115) && (0 < posY) && (posY < 30)){
@@ -370,8 +465,25 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad5)||this.tb.checkIsScore(this.cuad9)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad5)) {
+								this.pintacuad.cuadr5(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad9)){
+								this.pintacuad.cuadr9(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri19)||this.tb.checkIsScoreTri(tri20)||this.tb.checkIsScoreTri(tri33)||this.tb.checkIsScoreTri(tri34)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri19)) {
+								this.pintatri.tria19(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri20)){
+								this.pintatri.tria20(matrix);
+							} else if(this.tb.checkIsScoreTri(tri33)) {
+								this.pintatri.tria33(matrix);
+							} else if(this.tb.checkIsScoreTri(tri34)) {
+								this.pintatri.tria34(matrix);
+							}
+						}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -388,15 +500,32 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad6)||this.tb.checkIsScore(cuad10)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad6)) {
+								this.pintacuad.cuadr6(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad10)){
+								this.pintacuad.cuadr10(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri23)||this.tb.checkIsScoreTri(tri24)||this.tb.checkIsScoreTri(tri37)||this.tb.checkIsScoreTri(tri38)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri23)) {
+								this.pintatri.tria23(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri24)){
+								this.pintatri.tria24(matrix);
+							} else if(this.tb.checkIsScoreTri(tri37)) {
+								this.pintatri.tria37(matrix);
+							} else if(this.tb.checkIsScoreTri(tri38)) {
+								this.pintatri.tria38(matrix);
+							}
+						}
 						}
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
-				}
+				
 				
 				//C3
 				if((C3[1] < posX) && (posX < C3[2]) && (C3[3] < posY) && (posY < C3[4])){
@@ -406,15 +535,32 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad7)||this.tb.checkIsScore(cuad11)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad7)) {
+								this.pintacuad.cuadr7(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad11)){
+								this.pintacuad.cuadr11(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri27)||this.tb.checkIsScoreTri(tri28)||this.tb.checkIsScoreTri(tri41)||this.tb.checkIsScoreTri(tri42)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri27)) {
+								this.pintatri.tria27(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri28)){
+								this.pintatri.tria28(matrix);
+							} else if(this.tb.checkIsScoreTri(tri41)) {
+								this.pintatri.tria41(matrix);
+							} else if(this.tb.checkIsScoreTri(tri42)) {
+								this.pintatri.tria42(matrix);
+							}
+						}
 						}
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
-				}
+				
 				
 				//D3
 				if((D3[1] < posX) && (posX < D3[2]) && (D3[3] < posY) && (posY < D3[4])){
@@ -424,15 +570,32 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad8)||this.tb.checkIsScore(cuad12)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad8)) {
+								this.pintacuad.cuadr8(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad12)){
+								this.pintacuad.cuadr12(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri31)||this.tb.checkIsScoreTri(tri32)||this.tb.checkIsScoreTri(tri45)||this.tb.checkIsScoreTri(tri46)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri13)) {
+								this.pintatri.tria13(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri32)){
+								this.pintatri.tria32(matrix);
+							} else if(this.tb.checkIsScoreTri(tri45)) {
+								this.pintatri.tria45(matrix);
+							} else if(this.tb.checkIsScoreTri(tri46)) {
+								this.pintatri.tria46(matrix);
+							}
+						}
 						}
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
-				}
+				
 				
 				//A4
 				if((A4[1] < posX) && (posX < A4[2]) && (A4[3] < posY) && (posY < A4[4])){
@@ -442,15 +605,32 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad9)||this.tb.checkIsScore(cuad13)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad9)) {
+								this.pintacuad.cuadr9(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad13)){
+								this.pintacuad.cuadr13(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri35)||this.tb.checkIsScoreTri(tri36)||this.tb.checkIsScoreTri(tri49)||this.tb.checkIsScoreTri(tri50)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri35)) {
+								this.pintatri.tria35(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri36)){
+								this.pintatri.tria36(matrix);
+							} else if(this.tb.checkIsScoreTri(tri49)) {
+								this.pintatri.tria49(matrix);
+							} else if(this.tb.checkIsScoreTri(tri50)) {
+								this.pintatri.tria50(matrix);
+							}
+						}
 						}
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
-				}
+				
 				
 				//B4
 				if((B4[1] < posX) && (posX < B4[2]) && (B4[3] < posY) && (posY < B4[4])){
@@ -460,15 +640,32 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad10)||this.tb.checkIsScore(cuad14)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad10)) {
+								this.pintacuad.cuadr10(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad14)){
+								this.pintacuad.cuadr14(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri39)||this.tb.checkIsScoreTri(tri40)||this.tb.checkIsScoreTri(tri53)||this.tb.checkIsScoreTri(tri54)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri39)) {
+								this.pintatri.tria39(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri40)){
+								this.pintatri.tria40(matrix);
+							} else if(this.tb.checkIsScoreTri(tri53)) {
+								this.pintatri.tria53(matrix);
+							} else if(this.tb.checkIsScoreTri(tri54)) {
+								this.pintatri.tria54(matrix);
+							}
+						}
 						}
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
-				}
+				
 				
 				//C4
 				if((C4[1] < posX) && (posX < C4[2]) && (C4[3] < posY) && (posY < C4[4])){
@@ -478,15 +675,32 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad11)||this.tb.checkIsScore(cuad15)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad11)) {
+								this.pintacuad.cuadr11(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad15)){
+								this.pintacuad.cuadr15(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri43)||this.tb.checkIsScoreTri(tri44)||this.tb.checkIsScoreTri(tri57)||this.tb.checkIsScoreTri(tri58)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri43)) {
+								this.pintatri.tria43(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri44)){
+								this.pintatri.tria44(matrix);
+							} else if(this.tb.checkIsScoreTri(tri57)) {
+								this.pintatri.tria57(matrix);
+							} else if(this.tb.checkIsScoreTri(tri58)) {
+								this.pintatri.tria58(matrix);
+							}
+						}
 						}
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
-				}
+				
 				
 				//D4
 				if((D4[1] < posX) && (posX < D4[2]) && (D4[3] < posY) && (posY < D4[4])){
@@ -496,15 +710,32 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad12)||this.tb.checkIsScore(cuad16)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad12)) {
+								this.pintacuad.cuadr12(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad16)){
+								this.pintacuad.cuadr16(matrix);
+						}
 						} else if(this.tb.checkIsScoreTri(tri47)||this.tb.checkIsScoreTri(tri48)||this.tb.checkIsScoreTri(tri61)||this.tb.checkIsScoreTri(tri62)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri47)) {
+								this.pintatri.tria47(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri48)){
+								this.pintatri.tria48(matrix);
+							} else if(this.tb.checkIsScoreTri(tri61)) {
+								this.pintatri.tria61(matrix);
+							} else if(this.tb.checkIsScoreTri(tri62)) {
+								this.pintatri.tria62(matrix);
+							}
+						}
 						}
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
-				}
+				
 				
 				//A5
 				if((A5[1] < posX) && (posX < A5[2]) && (A5[3] < posY) && (posY < A5[4])){
@@ -514,8 +745,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad13)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr13(this.matrix);
 						} else if(this.tb.checkIsScoreTri(tri51)||this.tb.checkIsScoreTri(tri52)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri51)) {
+								this.pintatri.tria51(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri52)){
+								this.pintatri.tria52(matrix);
+							}
 						}
 						else {
 							this.p1.switchTurn();
@@ -532,8 +770,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad14)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr14(this.matrix);
 						} else if(this.tb.checkIsScoreTri(tri55)||this.tb.checkIsScoreTri(tri56)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri55)) {
+								this.pintatri.tria55(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri56)){
+								this.pintatri.tria56(matrix);
+							}
 						}
 						else {
 							this.p1.switchTurn();
@@ -550,8 +795,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad15)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr15(this.matrix);
 						} else if(this.tb.checkIsScoreTri(tri59)||this.tb.checkIsScoreTri(tri60)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri59)) {
+								this.pintatri.tria59(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri60)){
+								this.pintatri.tria60(matrix);
+							}
 						}
 						else {
 							this.p1.switchTurn();
@@ -568,8 +820,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad16)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr16(this.matrix);
 						} else if(this.tb.checkIsScoreTri(tri63)||this.tb.checkIsScoreTri(tri64)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri63)) {
+								this.pintatri.tria63(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri64)){
+								this.pintatri.tria64(matrix);
+							}
 						}
 						else {
 							this.p1.switchTurn();
@@ -587,8 +846,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad1)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr1(this.matrix);
 						} else if(this.tb.checkIsScoreTri(tri1)||this.tb.checkIsScoreTri(tri3)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri1)) {
+								this.pintatri.tria1(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri3)){
+								this.pintatri.tria3(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -604,8 +870,24 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad1)||this.tb.checkIsScore(this.cuad2)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad1)) {
+								this.pintacuad.cuadr1(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad2)){
+								this.pintacuad.cuadr2(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri2)||this.tb.checkIsScoreTri(tri4)||this.tb.checkIsScoreTri(tri5)||this.tb.checkIsScoreTri(tri7)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri2)) {
+								this.pintatri.tria2(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri4)){
+								this.pintatri.tria4(matrix);
+							} else if(this.tb.checkIsScoreTri(tri5)) {
+								this.pintatri.tria5(matrix);
+							} else if(this.tb.checkIsScoreTri(tri7)) {
+								this.pintatri.tria7(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -620,8 +902,24 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad2)||this.tb.checkIsScore(this.cuad3)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad2)) {
+								this.pintacuad.cuadr2(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad3)){
+								this.pintacuad.cuadr3(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri6)||this.tb.checkIsScoreTri(tri8)||this.tb.checkIsScoreTri(tri9)||this.tb.checkIsScoreTri(tri11)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri6)) {
+								this.pintatri.tria6(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri8)){
+								this.pintatri.tria8(matrix);
+							} else if(this.tb.checkIsScoreTri(tri9)) {
+								this.pintatri.tria9(matrix);
+							} else if(this.tb.checkIsScoreTri(tri11)) {
+								this.pintatri.tria11(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -636,14 +934,31 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad3)||this.tb.checkIsScore(this.cuad4)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad3)) {
+								this.pintacuad.cuadr3(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad4)){
+								this.pintacuad.cuadr4(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri10)||this.tb.checkIsScoreTri(tri12)||this.tb.checkIsScoreTri(tri13)||this.tb.checkIsScoreTri(tri15)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri10)) {
+								this.pintatri.tria10(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri12)){
+								this.pintatri.tria12(matrix);
+							} else if(this.tb.checkIsScoreTri(tri13)) {
+								this.pintatri.tria13(matrix);
+							} else if(this.tb.checkIsScoreTri(tri15)) {
+								this.pintatri.tria15(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
 					}
 				}
+				
 				//E5
 				if((E5[1] < posX) && (posX < E5[2]) && (E5[3] < posY) && (posY < E5[4])){
 					if(matrix.viewValue(8, 1) == 0){
@@ -652,8 +967,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad4)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr4(this.matrix);
 						}else if(this.tb.checkIsScoreTri(tri14)||this.tb.checkIsScoreTri(tri16)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri14)) {
+								this.pintatri.tria14(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri16)){
+								this.pintatri.tria16(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -669,8 +991,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad5)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr5(this.matrix);
 						}else if(this.tb.checkIsScoreTri(tri17)||this.tb.checkIsScoreTri(tri19)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri17)) {
+								this.pintatri.tria17(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri19)){
+								this.pintatri.tria19(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -686,8 +1015,24 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad5)||this.tb.checkIsScore(this.cuad6)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad5)) {
+								this.pintacuad.cuadr5(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad6)){
+								this.pintacuad.cuadr6(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri18)||this.tb.checkIsScoreTri(tri20)||this.tb.checkIsScoreTri(tri21)||this.tb.checkIsScoreTri(tri23)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri18)) {
+								this.pintatri.tria18(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri20)){
+								this.pintatri.tria20(matrix);
+							} else if(this.tb.checkIsScoreTri(tri21)) {
+								this.pintatri.tria21(matrix);
+							} else if(this.tb.checkIsScoreTri(tri23)) {
+								this.pintatri.tria23(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -702,8 +1047,24 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad6)||this.tb.checkIsScore(this.cuad7)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad6)) {
+								this.pintacuad.cuadr6(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad7)){
+								this.pintacuad.cuadr7(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri22)||this.tb.checkIsScoreTri(tri24)||this.tb.checkIsScoreTri(tri25)||this.tb.checkIsScoreTri(tri27)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri22)) {
+								this.pintatri.tria22(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri24)){
+								this.pintatri.tria24(matrix);
+							} else if(this.tb.checkIsScoreTri(tri25)) {
+								this.pintatri.tria25(matrix);
+							} else if(this.tb.checkIsScoreTri(tri27)) {
+								this.pintatri.tria27(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -718,8 +1079,24 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad7)||this.tb.checkIsScore(this.cuad8)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad7)) {
+								this.pintacuad.cuadr7(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad8)){
+								this.pintacuad.cuadr8(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri26)||this.tb.checkIsScoreTri(tri28)||this.tb.checkIsScoreTri(tri29)||this.tb.checkIsScoreTri(tri31)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri26)) {
+								this.pintatri.tria26(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri28)){
+								this.pintatri.tria28(matrix);
+							} else if(this.tb.checkIsScoreTri(tri29)) {
+								this.pintatri.tria29(matrix);
+							} else if(this.tb.checkIsScoreTri(tri31)) {
+								this.pintatri.tria31(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -734,8 +1111,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad8)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr8(this.matrix);
 						}else if(this.tb.checkIsScoreTri(tri30)||this.tb.checkIsScoreTri(tri32)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri30)) {
+								this.pintatri.tria30(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri32)){
+								this.pintatri.tria32(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -751,8 +1135,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad9)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr9(this.matrix);
 						}else if(this.tb.checkIsScoreTri(tri33)||this.tb.checkIsScoreTri(tri35)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri33)) {
+								this.pintatri.tria33(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri35)){
+								this.pintatri.tria35(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -767,8 +1158,24 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad9)||this.tb.checkIsScore(this.cuad10)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad9)) {
+								this.pintacuad.cuadr9(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad10)){
+								this.pintacuad.cuadr10(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri34)||this.tb.checkIsScoreTri(tri36)||this.tb.checkIsScoreTri(tri37)||this.tb.checkIsScoreTri(tri39)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri34)) {
+								this.pintatri.tria34(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri36)){
+								this.pintatri.tria36(matrix);
+							} else if(this.tb.checkIsScoreTri(tri37)) {
+								this.pintatri.tria37(matrix);
+							} else if(this.tb.checkIsScoreTri(tri39)) {
+								this.pintatri.tria39(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -783,8 +1190,24 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad10)||this.tb.checkIsScore(this.cuad11)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad10)) {
+								this.pintacuad.cuadr10(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad11)){
+								this.pintacuad.cuadr11(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri38)||this.tb.checkIsScoreTri(tri40)||this.tb.checkIsScoreTri(tri41)||this.tb.checkIsScoreTri(tri43)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri38)) {
+								this.pintatri.tria38(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri40)){
+								this.pintatri.tria40(matrix);
+							} else if(this.tb.checkIsScoreTri(tri41)) {
+								this.pintatri.tria41(matrix);
+							} else if(this.tb.checkIsScoreTri(tri43)) {
+								this.pintatri.tria43(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -799,8 +1222,24 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad11)||this.tb.checkIsScore(this.cuad12)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad11)) {
+								this.pintacuad.cuadr11(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad12)){
+								this.pintacuad.cuadr12(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri42)||this.tb.checkIsScoreTri(tri44)||this.tb.checkIsScoreTri(tri45)||this.tb.checkIsScoreTri(tri47)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri42)) {
+								this.pintatri.tria42(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri44)){
+								this.pintatri.tria44(matrix);
+							} else if(this.tb.checkIsScoreTri(tri45)) {
+								this.pintatri.tria45(matrix);
+							} else if(this.tb.checkIsScoreTri(tri47)) {
+								this.pintatri.tria47(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -815,8 +1254,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad12)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr12(this.matrix);
 						}else if(this.tb.checkIsScoreTri(tri46)||this.tb.checkIsScoreTri(tri48)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri46)) {
+								this.pintatri.tria46(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri48)){
+								this.pintatri.tria48(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -832,8 +1278,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad13)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr13(this.matrix);
 						}else if(this.tb.checkIsScoreTri(tri49)||this.tb.checkIsScoreTri(tri51)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri49)) {
+								this.pintatri.tria49(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri51)){
+								this.pintatri.tria51(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -849,8 +1302,24 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad13)||this.tb.checkIsScore(this.cuad14)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad13)) {
+								this.pintacuad.cuadr13(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad14)){
+								this.pintacuad.cuadr14(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri50)||this.tb.checkIsScoreTri(tri52)||this.tb.checkIsScoreTri(tri53)||this.tb.checkIsScoreTri(tri55)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri50)) {
+								this.pintatri.tria50(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri52)){
+								this.pintatri.tria52(matrix);
+							} else if(this.tb.checkIsScoreTri(tri53)) {
+								this.pintatri.tria53(matrix);
+							} else if(this.tb.checkIsScoreTri(tri55)) {
+								this.pintatri.tria55(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -865,8 +1334,24 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad14)||this.tb.checkIsScore(this.cuad15)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad14)) {
+								this.pintacuad.cuadr14(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad15)){
+								this.pintacuad.cuadr15(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri54)||this.tb.checkIsScoreTri(tri56)||this.tb.checkIsScoreTri(tri57)||this.tb.checkIsScoreTri(tri59)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri54)) {
+								this.pintatri.tria54(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri56)){
+								this.pintatri.tria56(matrix);
+							} else if(this.tb.checkIsScoreTri(tri57)) {
+								this.pintatri.tria57(matrix);
+							} else if(this.tb.checkIsScoreTri(tri59)) {
+								this.pintatri.tria59(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -876,14 +1361,29 @@ public class Logic {
 				//H4
 				if((H4[1] < posX) && (posX < H4[2]) && (H4[3] < posY) && (posY < H4[4])){
 					if(matrix.viewValue(6, 7) == 0){
-						//Cambia el color de la l�nea al color del jugador
 						this.H4[0] = lineColor;
 						matrix.changeValue(6, 7, 1);
 						
 						if(this.tb.checkIsScore(this.cuad15)||this.tb.checkIsScore(this.cuad16)) {
 							awardSquarePoints();
+							if(this.tb.checkIsScore(this.cuad15)) {
+								this.pintacuad.cuadr15(matrix);
+								
+							} else if(this.tb.checkIsScore(this.cuad16)){
+								this.pintacuad.cuadr16(matrix);
+						}
 						}else if(this.tb.checkIsScoreTri(tri58)||this.tb.checkIsScoreTri(tri60)||this.tb.checkIsScoreTri(tri61)||this.tb.checkIsScoreTri(tri63)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri58)) {
+								this.pintatri.tria58(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri60)){
+								this.pintatri.tria60(matrix);
+							} else if(this.tb.checkIsScoreTri(tri61)) {
+								this.pintatri.tria61(matrix);
+							} else if(this.tb.checkIsScoreTri(tri63)) {
+								this.pintatri.tria63(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -898,8 +1398,15 @@ public class Logic {
 						
 						if(this.tb.checkIsScore(this.cuad16)) {
 							awardSquarePoints();
+							this.pintacuad.cuadr16(this.matrix);
 						}else if(this.tb.checkIsScoreTri(tri62)||this.tb.checkIsScoreTri(tri64)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri62)) {
+								this.pintatri.tria62(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri64)){
+								this.pintatri.tria64(matrix);
+							}
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -907,7 +1414,95 @@ public class Logic {
 					}
 				}
 				
-				//The diagonals aren't implemented yet
+				//D1C1
+				if((D1C1[1] < posX) && (posX < D1C1[2]) && ((D1C1[1]+D1C1[2])/2)!= posX && (D1C1[3] < posY) && (posY < D1C1[4]) && ((D1C1[3]+D1C1[4])/2)!= posY) {
+					if(matrix.viewValue(1, 1) == 0){
+						this.D1C1[0] = lineColor;
+						matrix.changeValue(1, 1, 1);
+						
+						if(this.tb.checkIsScoreTri(tri1)||this.tb.checkIsScoreTri(tri4)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C1
+				if((D2C1[1] < posX) && (posX < D2C1[2]) && ((D2C1[1]+D2C1[2])/2)!= posX && (D2C1[3] < posY) && (posY < D2C1[4]) && ((D2C1[3]+D2C1[4])/2)!= posY) {
+					if(matrix.viewValue(1, 1) == 0){
+						this.D1C1[0] = lineColor;
+						matrix.changeValue(1, 1, 1);
+						
+						if(this.tb.checkIsScoreTri(tri2)||this.tb.checkIsScoreTri(tri3)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C2
+				if((D1C2[1] < posX) && (posX < D1C2[2]) && ((D1C2[1]+D1C2[2])/2)!= posX && (D1C2[3] < posY) && (posY < D1C2[4]) && ((D1C2[3]+D1C2[4])/2)!= posY) {
+					if(matrix.viewValue(1, 3) == 0){
+						this.D1C2[0] = lineColor;
+						matrix.changeValue(1, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri5)||this.tb.checkIsScoreTri(tri8)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C2
+				if((D2C2[1] < posX) && (posX < D2C2[2]) && ((D2C2[1]+D2C2[2])/2)!= posX && (D2C2[3] < posY) && (posY < D2C2[4]) && ((D2C2[3]+D2C2[4])/2)!= posY) {
+					if(matrix.viewValue(1, 3) == 0){
+						this.D2C2[0] = lineColor;
+						matrix.changeValue(1, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri6)||this.tb.checkIsScoreTri(tri7)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C3
+				if((D1C3[1] < posX) && (posX < D1C3[2]) && ((D1C3[1]+D1C3[2])/2)!= posX && (D1C3[3] < posY) && (posY < D1C3[4]) && ((D1C3[3]+D1C3[4])/2)!= posY) {
+					if(matrix.viewValue(1, 3) == 0){
+						this.D1C3[0] = lineColor;
+						matrix.changeValue(1, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri9)||this.tb.checkIsScoreTri(tri12)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C3
+				if((D2C3[1] < posX) && (posX < D2C3[2]) && ((D2C3[1]+D2C3[2])/2)!= posX && (D2C3[3] < posY) && (posY < D2C3[4]) && ((D2C3[3]+D2C3[4])/2)!= posY) {
+					if(matrix.viewValue(1, 3) == 0){
+						this.D2C3[0] = lineColor;
+						matrix.changeValue(1, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri10)||this.tb.checkIsScoreTri(tri11)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
 				
 				if(this.tb.checkGameOver(this.todasLasCajas, this.todasLasCajas))
 				{
@@ -918,4 +1513,4 @@ public class Logic {
 	}
 					
 	
-}
+

@@ -326,8 +326,16 @@ public class BoardLogic implements MouseListener{
 	 */
 	public void awardRightfulPoints() {
 		if(this.p1.getHasTurn()) {
+<<<<<<< HEAD
+=======
+			this.p1.scoreSquarePoints();
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/DotsServer.git
 		}
 		else {
+<<<<<<< HEAD
+=======
+			this.p2.scoreSquarePoints();
+>>>>>>> branch 'master' of https://github.com/Josecespedesant/DotsServer.git
 		}
 	}
 
