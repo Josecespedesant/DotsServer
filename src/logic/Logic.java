@@ -1,5 +1,7 @@
 package logic;
 
+import linkedlist.LinkedList;
+
 import matrix.Matrix;
 
 public class Logic {
@@ -7,14 +9,13 @@ public class Logic {
 	Player p1;
 	Player p2;
 	TurnBaseB tb;
-	
 	// Horizontal Lines
 	int[] A1, B1, C1, D1, A2, B2, C2, D2, A3, B3, C3, D3, A4, B4, C4, D4, A5, B5, C5, D5;
 	// Vertical Lines
 	int[] E1, F1, G1, H1, E2, F2, G2, H2, E3, F3, G3, H3, E4, F4, G4, H4, E5, F5, G5, H5;
 	// Diagonal Lines (Diagonal N del Cuadro M, si es D1 = / si es D2 = \)
-	int[] D1C1, D2C1, D1C2, D2C2,D1C3, D2C3,D1C4, D2C4,D1C5, D2C5,D1C6, 
-	D2C6,D1C7, D2C7,D1C8, D2C8,D1C9, D2C9,D1C10, D2C10,D1C11, D2C11,D1C12, 
+	int[] D1C1, D2C1, D1C2, D2C2,D1C3, D2C3,D1C4, D2C4,D1C5, D2C5,D1C6,
+	D2C6,D1C7, D2C7,D1C8, D2C8,D1C9, D2C9,D1C10, D2C10,D1C11, D2C11,D1C12,
 	D2C12,D1C13, D2C13,D1C14, D2C14,D1C15, D2C15,D1C16, D2C16;
 	//Todos los posibles cuadrados
 	int[][] cuad1,cuad2,cuad3,cuad4,cuad5,cuad6,cuad7,cuad8,cuad9,cuad10,cuad11,cuad12,cuad13,cuad14,cuad15,cuad16;
@@ -192,7 +193,7 @@ public class Logic {
 			this.cuad13, this.cuad14, this.cuad15, this.cuad16};
 	
 	}
-	
+
 	public void awardSquarePoints() {
 		if(this.p1.getHasTurn()) {
 			this.p1.scoreSquarePoints();
@@ -212,19 +213,21 @@ public class Logic {
 		}
 	}
 	
-	public void modifyMatrix(java.awt.event.MouseEvent e, int lineColor) {
+	public void modifyMatrix(LinkedList<Integer> posiciones, int lineColor) {
 		//Horizontales
+		
+		int posX = (int) posiciones.getHead().getData();
+		int posY = (int) posiciones.getHead().getNext().getData();
 		
 				//A1
 				//First we verify if the mouse is touching the line
-				if((A1[1] < e.getX()) && (e.getX() < A1[2]) && (A1[3] < e.getY()) && (e.getY() < A1[4])){
+				if((A1[1] < posX) && (posX < A1[2]) && (A1[3] < posY) && (posY < A1[4])){
 					//Then we see if the line is already made
 					if(matrix.viewValue(1, 0) == 0){
 						//If not, the value in A1[0] corresponds to the color of the line, changing the value to be drawn (later) on the screen
 						this.A1[0] = lineColor;
 						//We also change the value on the matrix so it can't be modified with this iteration again
 						matrix.changeValue(1, 0, 1);
-						
 						//If the line is used to enclose a square, it awards 8 points to the player who made it
 						if(this.tb.checkIsScore(this.cuad1)) {
 							awardSquarePoints();
@@ -237,12 +240,11 @@ public class Logic {
 							this.p2.switchTurn();
 						}
 					}
-					
 					//And all of those comments are valid for the rest of the verifications
 				}
 				
 				//B1
-				if((B1[1] < e.getX()) && (e.getX() < B1[2]) && (B1[3] < e.getY()) && (e.getY() < B1[4])){
+				if((B1[1] < posX) && (posX < B1[2]) && (B1[3] < posY) && (posY < B1[4])){
 					if(matrix.viewValue(3, 0) == 0){
 						this.B1[0] = lineColor;
 						matrix.changeValue(3, 0, 1);
@@ -259,7 +261,7 @@ public class Logic {
 				}
 				
 				//C1
-				if((C1[1] < e.getX()) && (e.getX() < C1[2]) && (C1[3] < e.getY()) && (e.getY() < C1[4])){
+				if((C1[1] < posX) && (posX < C1[2]) && (C1[3] < posY) && (posY < C1[4])){
 					if(matrix.viewValue(5, 0) == 0){
 						this.C1[0] = lineColor;
 						matrix.changeValue(5, 0, 1);
@@ -276,7 +278,7 @@ public class Logic {
 				}
 				
 				//D1
-				if((D1[1] < e.getX()) && (e.getX() < D1[2]) && (D1[3] < e.getY()) && (e.getY() < D1[4])){
+				if((D1[1] < posX) && (posX < D1[2]) && (D1[3] < posY) && (posY < D1[4])){
 					if(matrix.viewValue(7, 0) == 0){
 						this.D1[0] = lineColor;
 						matrix.changeValue(7, 0, 1);
@@ -294,7 +296,7 @@ public class Logic {
 				}
 				
 				//A2
-				if((A2[1] < e.getX()) && (e.getX() < A2[2]) && (A2[3] < e.getY()) && (e.getY() < A2[4])){
+				if((A2[1] < posX) && (posX < A2[2]) && (A2[3] < posY) && (posY < A2[4])){
 					if(matrix.viewValue(1, 2) == 0){
 						this.A2[0] = lineColor;
 						matrix.changeValue(1, 2, 1);
@@ -310,7 +312,7 @@ public class Logic {
 				}
 				
 				//B2
-				if((B2[1] < e.getX()) && (e.getX() < B2[2]) && (B2[3] < e.getY()) && (e.getY() < B2[4])){
+				if((B2[1] < posX) && (posX < B2[2]) && (B2[3] < posY) && (posY < B2[4])){
 					if(matrix.viewValue(3, 2) == 0){
 						this.B2[0] = lineColor;
 						matrix.changeValue(3, 2, 1);
@@ -326,7 +328,7 @@ public class Logic {
 				}
 				
 				//C2
-				if((C2[1] < e.getX()) && (e.getX() < C2[2]) && (C2[3] < e.getY()) && (e.getY() < C2[4])){
+				if((C2[1] < posX) && (posX < C2[2]) && (C2[3] < posY) && (posY < C2[4])){
 					if(matrix.viewValue(5, 2) == 0){
 						this.C2[0] = lineColor;
 						matrix.changeValue(5, 2, 1);
@@ -342,7 +344,7 @@ public class Logic {
 				}
 				
 				//D2
-				if((D2[1] < e.getX()) && (e.getX() < D2[2]) && (D2[3] < e.getY()) && (e.getY() < D2[4])){
+				if((D2[1] < posX) && (posX < D2[2]) && (D2[3] < posY) && (posY < D2[4])){
 					if(matrix.viewValue(7, 2) == 0){
 						this.D2[0] = lineColor;
 						matrix.changeValue(7, 2, 1);
@@ -359,7 +361,7 @@ public class Logic {
 				}
 				
 				//A3
-				if((30 < e.getX()) && (e.getX() < 115) && (0 < e.getY()) && (e.getY() < 30)){
+				if((30 < posX) && (posX < 115) && (0 < posY) && (posY < 30)){
 					if(matrix.viewValue(1, 4) == 0){
 						this.A3[0] = lineColor;
 						matrix.changeValue(1, 4, 1);
@@ -377,7 +379,7 @@ public class Logic {
 				}
 				
 				//B3
-				if((B3[1] < e.getX()) && (e.getX() < B3[2]) && (B3[3] < e.getY()) && (e.getY() < B3[4])){
+				if((B3[1] < posX) && (posX < B3[2]) && (B3[3] < posY) && (posY < B3[4])){
 					if(matrix.viewValue(3, 4) == 0){
 						this.B3[0] = lineColor;
 						matrix.changeValue(3, 4, 1);
@@ -395,7 +397,7 @@ public class Logic {
 				}
 				
 				//C3
-				if((C3[1] < e.getX()) && (e.getX() < C3[2]) && (C3[3] < e.getY()) && (e.getY() < C3[4])){
+				if((C3[1] < posX) && (posX < C3[2]) && (C3[3] < posY) && (posY < C3[4])){
 					if(matrix.viewValue(5, 4) == 0){
 						this.C3[0] = lineColor;
 						matrix.changeValue(5, 4, 1);
@@ -413,7 +415,7 @@ public class Logic {
 				}
 				
 				//D3
-				if((D3[1] < e.getX()) && (e.getX() < D3[2]) && (D3[3] < e.getY()) && (e.getY() < D3[4])){
+				if((D3[1] < posX) && (posX < D3[2]) && (D3[3] < posY) && (posY < D3[4])){
 					if(matrix.viewValue(7, 4) == 0){
 						this.D3[0] = lineColor;
 						matrix.changeValue(7, 4, 1);
@@ -431,7 +433,7 @@ public class Logic {
 				}
 				
 				//A4
-				if((A4[1] < e.getX()) && (e.getX() < A4[2]) && (A4[3] < e.getY()) && (e.getY() < A4[4])){
+				if((A4[1] < posX) && (posX < A4[2]) && (A4[3] < posY) && (posY < A4[4])){
 					if(matrix.viewValue(1, 6) == 0){
 						this.A4[0] = lineColor;
 						matrix.changeValue(1, 6, 1);
@@ -449,7 +451,7 @@ public class Logic {
 				}
 				
 				//B4
-				if((B4[1] < e.getX()) && (e.getX() < B4[2]) && (B4[3] < e.getY()) && (e.getY() < B4[4])){
+				if((B4[1] < posX) && (posX < B4[2]) && (B4[3] < posY) && (posY < B4[4])){
 					if(matrix.viewValue(3, 6) == 0){
 						this.B4[0] = lineColor;
 						matrix.changeValue(3, 6, 1);
@@ -467,7 +469,7 @@ public class Logic {
 				}
 				
 				//C4
-				if((C4[1] < e.getX()) && (e.getX() < C4[2]) && (C4[3] < e.getY()) && (e.getY() < C4[4])){
+				if((C4[1] < posX) && (posX < C4[2]) && (C4[3] < posY) && (posY < C4[4])){
 					if(matrix.viewValue(5, 6) == 0){
 						this.C4[0] = lineColor;
 						matrix.changeValue(5, 6, 1);
@@ -485,7 +487,7 @@ public class Logic {
 				}
 				
 				//D4
-				if((D4[1] < e.getX()) && (e.getX() < D4[2]) && (D4[3] < e.getY()) && (e.getY() < D4[4])){
+				if((D4[1] < posX) && (posX < D4[2]) && (D4[3] < posY) && (posY < D4[4])){
 					if(matrix.viewValue(7, 6) == 0){
 						this.D4[0] = lineColor;
 						matrix.changeValue(7, 6, 1);
@@ -503,7 +505,7 @@ public class Logic {
 				}
 				
 				//A5
-				if((A5[1] < e.getX()) && (e.getX() < A5[2]) && (A5[3] < e.getY()) && (e.getY() < A5[4])){
+				if((A5[1] < posX) && (posX < A5[2]) && (A5[3] < posY) && (posY < A5[4])){
 					if(matrix.viewValue(1, 8) == 0){
 						this.A5[0] = lineColor;
 						matrix.changeValue(1, 8, 1);
@@ -521,7 +523,7 @@ public class Logic {
 				}
 				
 				//B5
-				if((B5[1] < e.getX()) && (e.getX() < B5[2]) && (B5[3] < e.getY()) && (e.getY() < B5[4])){
+				if((B5[1] < posX) && (posX < B5[2]) && (B5[3] < posY) && (posY < B5[4])){
 					if(matrix.viewValue(3, 8) == 0){
 						this.B5[0] = lineColor;
 						matrix.changeValue(3, 8, 1);
@@ -539,7 +541,7 @@ public class Logic {
 				}
 				
 				//C5
-				if((C5[1] < e.getX()) && (e.getX() < C5[2]) && (C5[3] < e.getY()) && (e.getY() < C5[4])){
+				if((C5[1] < posX) && (posX < C5[2]) && (C5[3] < posY) && (posY < C5[4])){
 					if(matrix.viewValue(5, 8) == 0){
 						this.C5[0] = lineColor;
 						matrix.changeValue(5, 8, 1);
@@ -557,7 +559,7 @@ public class Logic {
 				}
 				
 				//D5
-				if((D5[1] < e.getX()) && (e.getX() < D5[2]) && (D5[3] < e.getY()) && (e.getY() < D5[4])){
+				if((D5[1] < posX) && (posX < D5[2]) && (D5[3] < posY) && (posY < D5[4])){
 					if(matrix.viewValue(7, 8) == 0){
 						this.D5[0] = lineColor;
 						matrix.changeValue(7, 8, 1);
@@ -576,7 +578,7 @@ public class Logic {
 				
 		// Vertical
 				//E1
-				if((E1[1] < e.getX()) && (e.getX() < E1[2]) && (E1[3] < e.getY()) && (e.getY() < E1[4])){
+				if((E1[1] < posX) && (posX < E1[2]) && (E1[3] < posY) && (posY < E1[4])){
 					if(matrix.viewValue(0, 1) == 0){
 						this.E1[0] = lineColor;
 						matrix.changeValue(0, 1, 1);
@@ -593,7 +595,7 @@ public class Logic {
 				}
 				
 				//E2
-				if((E2[1] < e.getX()) && (e.getX() < E2[2]) && (E2[3] < e.getY()) && (e.getY() < E2[4])){
+				if((E2[1] < posX) && (posX < E2[2]) && (E2[3] < posY) && (posY < E2[4])){
 					if(matrix.viewValue(2, 1) == 0){
 						this.E2[0] = lineColor;
 						matrix.changeValue(2, 1, 1);
@@ -609,7 +611,7 @@ public class Logic {
 					}
 				}
 				//E3
-				if((E3[1] < e.getX()) && (e.getX() < E3[2]) && (E3[3] < e.getY()) && (e.getY() < E3[4])){
+				if((E3[1] < posX) && (posX < E3[2]) && (E3[3] < posY) && (posY < E3[4])){
 					if(matrix.viewValue(4, 1) == 0){
 						this.E3[0] = lineColor;
 						matrix.changeValue(4, 1, 1);
@@ -625,7 +627,7 @@ public class Logic {
 					}
 				}
 				//E4
-				if((E4[1] < e.getX()) && (e.getX() < E4[2]) && (E4[3] < e.getY()) && (e.getY() < E4[4])){
+				if((E4[1] < posX) && (posX < E4[2]) && (E4[3] < posY) && (posY < E4[4])){
 					if(matrix.viewValue(6, 1) == 0){
 						this.E4[0] = lineColor;
 						matrix.changeValue(6, 1, 1);
@@ -640,8 +642,9 @@ public class Logic {
 						}
 					}
 				}
+				
 				//E5
-				if((E5[1] < e.getX()) && (e.getX() < E5[2]) && (E5[3] < e.getY()) && (e.getY() < E5[4])){
+				if((E5[1] < posX) && (posX < E5[2]) && (E5[3] < posY) && (posY < E5[4])){
 					if(matrix.viewValue(8, 1) == 0){
 						this.E5[0] = lineColor;
 						matrix.changeValue(8, 1, 1);
@@ -658,7 +661,7 @@ public class Logic {
 				}
 				
 				//F1
-				if((F1[1] < e.getX()) && (e.getX() < F1[2]) && (F1[3] < e.getY()) && (e.getY() < F1[4])){
+				if((F1[1] < posX) && (posX < F1[2]) && (F1[3] < posY) && (posY < F1[4])){
 					if(matrix.viewValue(0, 3) == 0){
 						this.F1[0] = lineColor;
 						matrix.changeValue(0, 3, 1);
@@ -675,7 +678,7 @@ public class Logic {
 				}
 				
 				//F2
-				if((F2[1] < e.getX()) && (e.getX() < F2[2]) && (F2[3] < e.getY()) && (e.getY() < F2[4])){
+				if((F2[1] < posX) && (posX < F2[2]) && (F2[3] < posY) && (posY < F2[4])){
 					if(matrix.viewValue(2, 3) == 0){
 						this.F2[0] = lineColor;
 						matrix.changeValue(2, 3, 1);
@@ -691,7 +694,7 @@ public class Logic {
 					}
 				}
 				//F3
-				if((F3[1] < e.getX()) && (e.getX() < F3[2]) && (F3[3] < e.getY()) && (e.getY() < F3[4])){
+				if((F3[1] < posX) && (posX < F3[2]) && (F3[3] < posY) && (posY < F3[4])){
 					if(matrix.viewValue(4, 3) == 0){
 						this.F3[0] = lineColor;
 						matrix.changeValue(4, 3, 1);
@@ -707,7 +710,7 @@ public class Logic {
 					}
 				}
 				//F4
-				if((F4[1] < e.getX()) && (e.getX() < F4[2]) && (F4[3] < e.getY()) && (e.getY() < F4[4])){
+				if((F4[1] < posX) && (posX < F4[2]) && (F4[3] < posY) && (posY < F4[4])){
 					if(matrix.viewValue(6, 3) == 0){
 						this.F4[0] = lineColor;
 						matrix.changeValue(6, 3, 1);
@@ -723,7 +726,7 @@ public class Logic {
 					}
 				}
 				//F5
-				if((F5[1] < e.getX()) && (e.getX() < F5[2]) && (F5[3] < e.getY()) && (e.getY() < F5[4])){
+				if((F5[1] < posX) && (posX < F5[2]) && (F5[3] < posY) && (posY < F5[4])){
 					if(matrix.viewValue(8, 3) == 0){
 						this.F5[0] = lineColor;
 						matrix.changeValue(8, 3, 1);
@@ -740,7 +743,7 @@ public class Logic {
 				}
 				
 				//G1
-				if((G1[1] < e.getX()) && (e.getX() < G1[2]) && (G1[3] < e.getY()) && (e.getY() < G1[4])){
+				if((G1[1] < posX) && (posX < G1[2]) && (G1[3] < posY) && (posY < G1[4])){
 					if(matrix.viewValue(0, 5) == 0){
 						this.G1[0] = lineColor;
 						matrix.changeValue(0, 5, 1);
@@ -756,7 +759,7 @@ public class Logic {
 				}
 				
 				//G2
-				if((G2[1] < e.getX()) && (e.getX() < G2[2]) && (G2[3] < e.getY()) && (e.getY() < G2[4])){
+				if((G2[1] < posX) && (posX < G2[2]) && (G2[3] < posY) && (posY < G2[4])){
 					if(matrix.viewValue(2, 5) == 0){
 						this.G2[0] = lineColor;
 						matrix.changeValue(2, 5, 1);
@@ -772,7 +775,7 @@ public class Logic {
 					}
 				}
 				//G3
-				if((G3[1] < e.getX()) && (e.getX() < G3[2]) && (G3[3] < e.getY()) && (e.getY() < G3[4])){
+				if((G3[1] < posX) && (posX < G3[2]) && (G3[3] < posY) && (posY < G3[4])){
 					if(matrix.viewValue(4, 5) == 0){
 						this.G3[0] = lineColor;
 						matrix.changeValue(4, 5, 1);
@@ -788,7 +791,7 @@ public class Logic {
 					}
 				}
 				//G4
-				if((G4[1] < e.getX()) && (e.getX() < G4[2]) && (G4[3] < e.getY()) && (e.getY() < G4[4])){
+				if((G4[1] < posX) && (posX < G4[2]) && (G4[3] < posY) && (posY < G4[4])){
 					if(matrix.viewValue(6, 5) == 0){
 						this.G4[0] = lineColor;
 						matrix.changeValue(6, 5, 1);
@@ -804,7 +807,7 @@ public class Logic {
 					}
 				}
 				//G5
-				if((G5[1] < e.getX()) && (e.getX() < G5[2]) && (G5[3] < e.getY()) && (e.getY() < G5[4])){
+				if((G5[1] < posX) && (posX < G5[2]) && (G5[3] < posY) && (posY < G5[4])){
 					if(matrix.viewValue(8, 5) == 0){
 						this.G5[0] = lineColor;
 						matrix.changeValue(8, 5, 1);
@@ -821,7 +824,7 @@ public class Logic {
 				}
 				
 				//H1
-				if((H1[1] < e.getX()) && (e.getX() < H1[2]) && (H1[3] < e.getY()) && (e.getY() < H1[4])){
+				if((H1[1] < posX) && (posX < H1[2]) && (H1[3] < posY) && (posY < H1[4])){
 					if(matrix.viewValue(0, 7) == 0){
 						this.H1[0] = lineColor;
 						matrix.changeValue(0, 7, 1);
@@ -838,7 +841,7 @@ public class Logic {
 				}
 				
 				//H2
-				if((H2[1] < e.getX()) && (e.getX() < H2[2]) && (H2[3] < e.getY()) && (e.getY() < H2[4])){
+				if((H2[1] < posX) && (posX < H2[2]) && (H2[3] < posY) && (posY < H2[4])){
 					if(matrix.viewValue(2, 7) == 0){
 						this.H2[0] = lineColor;
 						matrix.changeValue(2, 7, 1);
@@ -854,7 +857,7 @@ public class Logic {
 					}
 				}
 				//H3
-				if((H3[1] < e.getX()) && (e.getX() < H3[2]) && (H3[3] < e.getY()) && (e.getY() < H3[4])){
+				if((H3[1] < posX) && (posX < H3[2]) && (H3[3] < posY) && (posY < H3[4])){
 					if(matrix.viewValue(4, 7) == 0){
 						this.H3[0] = lineColor;
 						matrix.changeValue(4, 7, 1);
@@ -870,9 +873,8 @@ public class Logic {
 					}
 				}
 				//H4
-				if((H4[1] < e.getX()) && (e.getX() < H4[2]) && (H4[3] < e.getY()) && (e.getY() < H4[4])){
+				if((H4[1] < posX) && (posX < H4[2]) && (H4[3] < posY) && (posY < H4[4])){
 					if(matrix.viewValue(6, 7) == 0){
-						//Cambia el color de la l�nea al color del jugador
 						this.H4[0] = lineColor;
 						matrix.changeValue(6, 7, 1);
 						
@@ -887,7 +889,7 @@ public class Logic {
 					}
 				}
 				//H5
-				if((H5[1] < e.getX()) && (e.getX() < H5[2]) && (H5[3] < e.getY()) && (e.getY() < H5[4])){
+				if((H5[1] < posX) && (posX < H5[2]) && (H5[3] < posY) && (posY < H5[4])){
 					if(matrix.viewValue(8, 7) == 0){
 						this.H5[0] = lineColor;
 						matrix.changeValue(8, 7, 1);
@@ -903,7 +905,95 @@ public class Logic {
 					}
 				}
 				
-				//The diagonals aren't implemented yet
+				//D1C1
+				if((D1C1[1] < posX) && (posX < D1C1[2]) && ((D1C1[1]+D1C1[2])/2)!= posX && (D1C1[3] < posY) && (posY < D1C1[4]) && ((D1C1[3]+D1C1[4])/2)!= posY) {
+					if(matrix.viewValue(1, 1) == 0){
+						this.D1C1[0] = lineColor;
+						matrix.changeValue(1, 1, 1);
+						
+						if(this.tb.checkIsScoreTri(tri1)||this.tb.checkIsScoreTri(tri4)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C1
+				if((D2C1[1] < posX) && (posX < D2C1[2]) && ((D2C1[1]+D2C1[2])/2)!= posX && (D2C1[3] < posY) && (posY < D2C1[4]) && ((D2C1[3]+D2C1[4])/2)!= posY) {
+					if(matrix.viewValue(1, 1) == 0){
+						this.D1C1[0] = lineColor;
+						matrix.changeValue(1, 1, 1);
+						
+						if(this.tb.checkIsScoreTri(tri2)||this.tb.checkIsScoreTri(tri3)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C2
+				if((D1C2[1] < posX) && (posX < D1C2[2]) && ((D1C2[1]+D1C2[2])/2)!= posX && (D1C2[3] < posY) && (posY < D1C2[4]) && ((D1C2[3]+D1C2[4])/2)!= posY) {
+					if(matrix.viewValue(1, 3) == 0){
+						this.D1C2[0] = lineColor;
+						matrix.changeValue(1, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri5)||this.tb.checkIsScoreTri(tri8)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C2
+				if((D2C2[1] < posX) && (posX < D2C2[2]) && ((D2C2[1]+D2C2[2])/2)!= posX && (D2C2[3] < posY) && (posY < D2C2[4]) && ((D2C2[3]+D2C2[4])/2)!= posY) {
+					if(matrix.viewValue(1, 3) == 0){
+						this.D2C2[0] = lineColor;
+						matrix.changeValue(1, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri6)||this.tb.checkIsScoreTri(tri7)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C3
+				if((D1C3[1] < posX) && (posX < D1C3[2]) && ((D1C3[1]+D1C3[2])/2)!= posX && (D1C3[3] < posY) && (posY < D1C3[4]) && ((D1C3[3]+D1C3[4])/2)!= posY) {
+					if(matrix.viewValue(1, 3) == 0){
+						this.D1C3[0] = lineColor;
+						matrix.changeValue(1, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri9)||this.tb.checkIsScoreTri(tri12)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C3
+				if((D2C3[1] < posX) && (posX < D2C3[2]) && ((D2C3[1]+D2C3[2])/2)!= posX && (D2C3[3] < posY) && (posY < D2C3[4]) && ((D2C3[3]+D2C3[4])/2)!= posY) {
+					if(matrix.viewValue(1, 3) == 0){
+						this.D2C3[0] = lineColor;
+						matrix.changeValue(1, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri10)||this.tb.checkIsScoreTri(tri11)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
 				
 				if(this.tb.checkGameOver(this.todasLasCajas, this.todasLasCajas))
 				{
