@@ -326,10 +326,8 @@ public class BoardLogic implements MouseListener{
 	 */
 	public void awardRightfulPoints() {
 		if(this.p1.getHasTurn()) {
-			this.p1.scorePoints();
 		}
 		else {
-			this.p2.scorePoints();
 		}
 	}
 
