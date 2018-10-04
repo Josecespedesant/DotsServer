@@ -1,0 +1,82 @@
+this.tri1 = new int [][] {this.A1, this.E1, this.D1C1};
+		this.tri2 = new int [][] {this.A1, this.E2, this.D2C1};
+		this.tri3 = new int [][] {this.A2, this.E1, this.D2C1};
+		this.tri4 = new int [][] {this.A2, this.E2, this.D1C1};
+		
+		this.tri5 = new int [][] {this.B1, this.E2, this.D1C2};
+		this.tri6 = new int [][] {this.B1, this.E3, this.D2C2};
+		this.tri7 = new int [][] {this.B2, this.E2, this.D2C2};
+		this.tri8 = new int [][] {this.B2, this.E3, this.D1C2};
+		
+		 this.tri9 = new int [][] {this.C1, this.E3, this.D1C3};
+		this.tri10 = new int [][] {this.C1, this.E4, this.D2C3};
+		this.tri11 = new int [][] {this.C2, this.E3, this.D2C3};
+		this.tri12 = new int [][] {this.C2, this.E4, this.D1C3};
+		
+		this.tri13 = new int [][] {this.D1, this.E4, this.D1C4};
+		this.tri14 = new int [][] {this.D1, this.E5, this.D2C4};
+		this.tri15 = new int [][] {this.D2, this.E4, this.D2C4};
+		this.tri16 = new int [][] {this.D2, this.E5, this.D1C4};
+		
+		//2nd row
+		this.tri17 = new int [][] {this.A2, this.F1, this.D1C5};
+		this.tri18 = new int [][] {this.A2, this.F2, this.D2C5};
+		this.tri19 = new int [][] {this.A3, this.F1, this.D2C5};
+		this.tri20 = new int [][] {this.A3, this.F2, this.D1C5};
+		
+		this.tri21 = new int [][] {this.B2, this.F2, this.D1C6};
+		this.tri22 = new int [][] {this.B2, this.F3, this.D2C6};
+		this.tri23 = new int [][] {this.B3, this.F2, this.D2C6};
+		this.tri24 = new int [][] {this.B3, this.F3, this.D1C6};
+		
+		this.tri25 = new int [][] {this.C2, this.F3, this.D1C7};
+		this.tri26 = new int [][] {this.C2, this.F4, this.D2C7};
+		this.tri27 = new int [][] {this.C3, this.F3, this.D2C7};
+		this.tri28 = new int [][] {this.C3, this.F4, this.D1C7};
+		
+		this.tri29 = new int [][] {this.D2, this.F4, this.D1C8};
+		this.tri30 = new int [][] {this.D2, this.F5, this.D2C8};
+		this.tri31 = new int [][] {this.D3, this.F4, this.D2C8};
+		this.tri32 = new int [][] {this.D3, this.F5, this.D1C8};
+		
+		//3rd row
+		this.tri33 = new int [][] {this.A3, this.G1, this.D1C9};
+		this.tri34 = new int [][] {this.A3, this.G2, this.D2C9};
+		this.tri35 = new int [][] {this.A4, this.G1, this.D2C9};
+		this.tri36 = new int [][] {this.A4, this.G2, this.D1C9};
+		
+		this.tri37 = new int [][] {this.B3, this.G2, this.D1C10};
+		this.tri38 = new int [][] {this.B3, this.G3, this.D2C10};
+		this.tri39 = new int [][] {this.B4, this.G2, this.D2C10};
+		this.tri40 = new int [][] {this.B4, this.G3, this.D1C10};
+		
+		this.tri41 = new int [][] {this.C3, this.G3, this.D1C11};
+		this.tri42 = new int [][] {this.C3, this.G4, this.D2C11};
+		this.tri43 = new int [][] {this.C4, this.G3, this.D2C11};
+		this.tri44 = new int [][] {this.C4, this.G4, this.D1C11};
+		
+		this.tri45 = new int [][] {this.D3, this.G4, this.D1C12};
+		this.tri46 = new int [][] {this.D3, this.G5, this.D2C12};
+		this.tri47 = new int [][] {this.D4, this.G4, this.D2C12};
+		this.tri48 = new int [][] {this.D4, this.G5, this.D1C12};
+		
+		//4th row
+		this.tri49 = new int [][] {this.A4, this.H1, this.D1C13};
+		this.tri50 = new int [][] {this.A4, this.H2, this.D2C13};
+		this.tri51 = new int [][] {this.A5, this.H1, this.D2C13};
+		this.tri52 = new int [][] {this.A5, this.H2, this.D1C13};
+		
+		this.tri53 = new int [][] {this.B4, this.H2, this.D1C14};
+		this.tri54 = new int [][] {this.B4, this.H3, this.D2C14};
+		this.tri55 = new int [][] {this.B5, this.H2, this.D2C14};
+		this.tri56 = new int [][] {this.B5, this.H3, this.D1C14};
+		
+		this.tri57 = new int [][] {this.C4, this.H3, this.D1C15};
+		this.tri58 = new int [][] {this.C4, this.H4, this.D2C15};
+		this.tri59 = new int [][] {this.C5, this.H3, this.D2C15};
+		this.tri60 = new int [][] {this.C5, this.H4, this.D1C15};
+		
+		this.tri61 = new int [][] {this.D4, this.H4, this.D1C16};
+		this.tri62 = new int [][] {this.D4, this.H5, this.D2C16};
+		this.tri63 = new int [][] {this.D5, this.H4, this.D2C16};
+		this.tri64 = new int [][] {this.D5, this.H5, this.D1C16};
