@@ -1,12 +1,12 @@
 package logic;
 
+import json_parse.Parse;
 import linkedlist.LinkedList;
 
 import matrix.Matrix;
-import linkedlist.LinkedList;
 
 public class Logic {
-	Matrix matrix = new Matrix(9,9,0);
+	Matrix matrix;
 	Player p1;
 	Player p2;
 	TurnBaseB tb;
@@ -28,45 +28,17 @@ public class Logic {
 	int[][][] todasLasCajas;
 	PintaCuad pintacuad  = new PintaCuad();
 	PintaTri pintatri = new PintaTri();
-	public Logic(Player p1, Player p2) {
+	Parse parser = new Parse();
+	
+	
+	
+	public Logic(Player p1, Player p2, Matrix matrix) {
 		this.p1 = p1;
 		this.p2 = p2;
-		generateMatrixDots();
+		this.matrix = matrix;
 		this.tb = new TurnBaseB(this,p1,p2);
 		organizeTriangles();
 		organizeSquares();
-	}
-		
-	public void generateMatrixDots() {
-		matrix.changeValue(0, 0, 1);
-		matrix.changeValue(2, 0, 1);
-		matrix.changeValue(4, 0, 1);
-		matrix.changeValue(6, 0, 1);
-		matrix.changeValue(8, 0, 1);
-		
-		matrix.changeValue(0, 2, 1);
-		matrix.changeValue(2, 2, 1);
-		matrix.changeValue(4, 2, 1);
-		matrix.changeValue(6, 2, 1);
-		matrix.changeValue(8, 2, 1);
-		
-		matrix.changeValue(0, 4, 1);
-		matrix.changeValue(2, 4, 1);
-		matrix.changeValue(4, 4, 1);
-		matrix.changeValue(6, 4, 1);
-		matrix.changeValue(8, 4, 1);
-		
-		matrix.changeValue(0, 6, 1);
-		matrix.changeValue(2, 6, 1);
-		matrix.changeValue(4, 6, 1);
-		matrix.changeValue(6, 6, 1);
-		matrix.changeValue(8, 6, 1);
-		
-		matrix.changeValue(0, 8, 1);
-		matrix.changeValue(2, 8, 1);
-		matrix.changeValue(4, 8, 1);
-		matrix.changeValue(6, 8, 1);
-		matrix.changeValue(8, 8, 1);
 	}
 	
 	public void organizeTriangles() {
@@ -197,7 +169,7 @@ public class Logic {
 	}
 
 	public void awardSquarePoints() {
-		if(this.p1.getHasTurn()) {
+		if(this.p1.getActiveTurn()) {
 			this.p1.scoreSquarePoints();
 		}
 		else {
@@ -207,7 +179,7 @@ public class Logic {
 	
 	
 	public void awardTriPoints() {
-		if(this.p1.getHasTurn()) {
+		if(this.p1.getActiveTurn()) {
 			this.p1.scoreTriPoints();
 		}
 		else {
@@ -216,11 +188,8 @@ public class Logic {
 	}
 
 	
-<<<<<<< HEAD
-	public void modifyMatrix(LinkedList posiciones, int lineColor) {
-=======
+
 	public void modifyMatrix(LinkedList<Integer> posiciones, int lineColor) {
->>>>>>> branch 'master' of https://github.com/Josecespedesant/DotsServer.git
 		//Horizontales
 		
 		int posX = (int) posiciones.getHead().getData();
@@ -1496,6 +1465,276 @@ public class Logic {
 						matrix.changeValue(1, 3, 1);
 						
 						if(this.tb.checkIsScoreTri(tri10)||this.tb.checkIsScoreTri(tri11)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C4
+				if((D1C4[1] < posX) && (posX < D1C4[2]) && ((D1C4[1]+D1C4[2])/2)!= posX && (D1C4[3] < posY) && (posY < D1C4[4]) && ((D1C4[3]+D1C4[4])/2)!= posY) {
+					if(matrix.viewValue(1, 5) == 0){
+						this.D1C3[0] = lineColor;
+						matrix.changeValue(1, 5, 1);
+						
+						if(this.tb.checkIsScoreTri(tri13)||this.tb.checkIsScoreTri(tri16)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C4
+				if((D2C4[1] < posX) && (posX < D2C4[2]) && ((D2C4[1]+D2C4[2])/2)!= posX && (D2C4[3] < posY) && (posY < D2C4[4]) && ((D2C4[3]+D2C4[4])/2)!= posY) {
+					if(matrix.viewValue(1, 5) == 0){
+						this.D2C4[0] = lineColor;
+						matrix.changeValue(1, 5, 1);
+						
+						if(this.tb.checkIsScoreTri(tri14)||this.tb.checkIsScoreTri(tri15)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C5
+				if((D1C5[1] < posX) && (posX < D1C5[2]) && ((D1C5[1]+D1C5[2])/2)!= posX && (D1C5[3] < posY) && (posY < D1C5[4]) && ((D1C5[3]+D1C5[4])/2)!= posY) {
+					if(matrix.viewValue(3, 1) == 0){
+						this.D1C5[0] = lineColor;
+						matrix.changeValue(3, 1, 1);
+						
+						if(this.tb.checkIsScoreTri(tri17)||this.tb.checkIsScoreTri(tri20)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C5
+				if((D2C5[1] < posX) && (posX < D2C5[2]) && ((D2C5[1]+D2C5[2])/2)!= posX && (D2C5[3] < posY) && (posY < D2C5[4]) && ((D2C5[3]+D2C5[4])/2)!= posY) {
+					if(matrix.viewValue(3, 1) == 0){
+						this.D2C5[0] = lineColor;
+						matrix.changeValue(3, 1, 1);
+						
+						if(this.tb.checkIsScoreTri(tri18)||this.tb.checkIsScoreTri(tri19)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C6
+				if((D1C6[1] < posX) && (posX < D1C6[2]) && ((D1C6[1]+D1C6[2])/2)!= posX && (D1C6[3] < posY) && (posY < D1C6[4]) && ((D1C6[3]+D1C6[4])/2)!= posY) {
+					if(matrix.viewValue(3, 3) == 0){
+						this.D1C6[0] = lineColor;
+						matrix.changeValue(3, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri21)||this.tb.checkIsScoreTri(tri24)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C6
+				if((D2C6[1] < posX) && (posX < D2C6[2]) && ((D2C6[1]+D2C6[2])/2)!= posX && (D2C6[3] < posY) && (posY < D2C6[4]) && ((D2C6[3]+D2C6[4])/2)!= posY) {
+					if(matrix.viewValue(3, 3) == 0){
+						this.D2C6[0] = lineColor;
+						matrix.changeValue(3, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri22)||this.tb.checkIsScoreTri(tri23)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C7
+				if((D1C7[1] < posX) && (posX < D1C7[2]) && ((D1C7[1]+D1C7[2])/2)!= posX && (D1C7[3] < posY) && (posY < D1C7[4]) && ((D1C7[3]+D1C7[4])/2)!= posY) {
+					if(matrix.viewValue(3, 5) == 0){
+						this.D1C7[0] = lineColor;
+						matrix.changeValue(3, 5, 1);
+						
+						if(this.tb.checkIsScoreTri(tri25)||this.tb.checkIsScoreTri(tri28)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C7
+				if((D2C7[1] < posX) && (posX < D2C7[2]) && ((D2C7[1]+D2C6[2])/2)!= posX && (D2C7[3] < posY) && (posY < D2C7[4]) && ((D2C7[3]+D2C7[4])/2)!= posY) {
+					if(matrix.viewValue(3, 3) == 0){
+						this.D2C7[0] = lineColor;
+						matrix.changeValue(3, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri26)||this.tb.checkIsScoreTri(tri27)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C8
+				if((D1C8[1] < posX) && (posX < D1C8[2]) && ((D1C8[1]+D1C8[2])/2)!= posX && (D1C8[3] < posY) && (posY < D1C8[4]) && ((D1C8[3]+D1C8[4])/2)!= posY) {
+					if(matrix.viewValue(3, 7) == 0){
+						this.D1C8[0] = lineColor;
+						matrix.changeValue(3, 7, 1);
+						
+						if(this.tb.checkIsScoreTri(tri29)||this.tb.checkIsScoreTri(tri32)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C8
+				if((D2C8[1] < posX) && (posX < D2C8[2]) && ((D2C8[1]+D2C8[2])/2)!= posX && (D2C8[3] < posY) && (posY < D2C8[4]) && ((D2C8[3]+D2C8[4])/2)!= posY) {
+					if(matrix.viewValue(3, 7) == 0){
+						this.D2C8[0] = lineColor;
+						matrix.changeValue(3, 7, 1);
+						
+						if(this.tb.checkIsScoreTri(tri30)||this.tb.checkIsScoreTri(tri31)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C9
+				if((D1C9[1] < posX) && (posX < D1C9[2]) && ((D1C9[1]+D1C9[2])/2)!= posX && (D1C9[3] < posY) && (posY < D1C9[4]) && ((D1C9[3]+D1C9[4])/2)!= posY) {
+					if(matrix.viewValue(5, 1) == 0){
+						this.D1C9[0] = lineColor;
+						matrix.changeValue(5, 1, 1);
+						
+						if(this.tb.checkIsScoreTri(tri33)||this.tb.checkIsScoreTri(tri36)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C9
+				if((D2C9[1] < posX) && (posX < D2C9[2]) && ((D2C9[1]+D2C9[2])/2)!= posX && (D2C9[3] < posY) && (posY < D2C9[4]) && ((D2C9[3]+D2C9[4])/2)!= posY) {
+					if(matrix.viewValue(5, 1) == 0){
+						this.D2C9[0] = lineColor;
+						matrix.changeValue(5, 1, 1);
+						
+						if(this.tb.checkIsScoreTri(tri34)||this.tb.checkIsScoreTri(tri35)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C10
+				if((D1C10[1] < posX) && (posX < D1C10[2]) && ((D1C10[1]+D1C10[2])/2)!= posX && (D1C10[3] < posY) && (posY < D1C10[4]) && ((D1C10[3]+D1C10[4])/2)!= posY) {
+					if(matrix.viewValue(5, 3) == 0){
+						this.D1C10[0] = lineColor;
+						matrix.changeValue(5, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri37)||this.tb.checkIsScoreTri(tri40)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C10
+				if((D2C10[1] < posX) && (posX < D2C10[2]) && ((D2C10[1]+D2C10[2])/2)!= posX && (D2C10[3] < posY) && (posY < D2C10[4]) && ((D2C10[3]+D2C10[4])/2)!= posY) {
+					if(matrix.viewValue(5, 3) == 0){
+						this.D2C10[0] = lineColor;
+						matrix.changeValue(5, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri38)||this.tb.checkIsScoreTri(tri39)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C11
+				if((D1C11[1] < posX) && (posX < D1C11[2]) && ((D1C11[1]+D1C11[2])/2)!= posX && (D1C11[3] < posY) && (posY < D1C11[4]) && ((D1C11[3]+D1C11[4])/2)!= posY) {
+					if(matrix.viewValue(5, 5) == 0){
+						this.D1C11[0] = lineColor;
+						matrix.changeValue(5, 5, 1);
+						
+						if(this.tb.checkIsScoreTri(tri41)||this.tb.checkIsScoreTri(tri44)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C11
+				if((D2C11[1] < posX) && (posX < D2C11[2]) && ((D2C11[1]+D2C11[2])/2)!= posX && (D2C11[3] < posY) && (posY < D2C11[4]) && ((D2C11[3]+D2C11[4])/2)!= posY) {
+					if(matrix.viewValue(5, 5) == 0){
+						this.D2C11[0] = lineColor;
+						matrix.changeValue(5, 5, 1);
+						
+						if(this.tb.checkIsScoreTri(tri42)||this.tb.checkIsScoreTri(tri43)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C12
+				if((D1C12[1] < posX) && (posX < D1C12[2]) && ((D1C12[1]+D1C12[2])/2)!= posX && (D1C12[3] < posY) && (posY < D1C12[4]) && ((D1C12[3]+D1C12[4])/2)!= posY) {
+					if(matrix.viewValue(5, 5) == 0){
+						this.D1C12[0] = lineColor;
+						matrix.changeValue(5, 5, 1);
+						
+						if(this.tb.checkIsScoreTri(tri45)||this.tb.checkIsScoreTri(tri48)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C12
+				if((D2C12[1] < posX) && (posX < D2C12[2]) && ((D2C12[1]+D2C12[2])/2)!= posX && (D2C12[3] < posY) && (posY < D2C12[4]) && ((D2C12[3]+D2C12[4])/2)!= posY) {
+					if(matrix.viewValue(5, 5) == 0){
+						this.D2C12[0] = lineColor;
+						matrix.changeValue(5, 5, 1);
+						
+						if(this.tb.checkIsScoreTri(tri46)||this.tb.checkIsScoreTri(tri47)) {
 							awardTriPoints();
 						} else {
 							this.p1.switchTurn();

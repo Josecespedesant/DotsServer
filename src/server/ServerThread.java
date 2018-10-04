@@ -11,6 +11,8 @@ import org.json.simple.parser.ParseException;
 import json_conversion.Conversion;
 import json_parse.Parse;
 import linkedlist.LinkedList;
+import logic.Logic;
+import logic.Player;
 import matrix.Matrix;
 import queue.LinkedQueue;
  
@@ -24,6 +26,7 @@ public class ServerThread extends Thread {
     private Socket socket;
     private LinkedQueue<Socket> queue;
     public static int i;
+    public Logic logic;
     
     /**
      * Constructor of the ServerThread class that receives the socket.
@@ -65,8 +68,18 @@ public class ServerThread extends Thread {
     		System.out.println(JsonString);
    
     		Parse parserM = new Parse();
-
-    		Matrix matrix = parserM.JsonToMatrix(json);
+    		LinkedList list = parserM.JsonToGameState(json);
+    		
+    		
+    		Player player1 = (Player) list.getHead().getNext().getData();
+    		Player player2 = (Player) list.getHead().getNext().getNext().getData();
+    		Matrix matrix = (Matrix) list.getHead().getData();
+    		
+    		logic = new Logic(player1, player2, matrix);
+    		
+    		LinkedList posiciones = (LinkedList) list.getHead().getNext().getNext().getNext().getData();
+    		
+    		logic.modifyMatrix(posiciones, 1);
     		matrix.printMatrix();
     	} 
     	catch (UnknownHostException ex) {

@@ -7,15 +7,13 @@ package logic;
  */
 public class Player {
 	
-	int playerType;
     private int score = 0;
-    private boolean hasTurn;
+    private boolean activeTurn;
     private String name;
     
-    public Player(String name, int p) {
-    	this.playerType = p;
+    public Player(String name) {
         this.name = name;
-        hasTurn = false;
+        activeTurn = false;
     }
     
     public void setName(String name) {
@@ -25,26 +23,18 @@ public class Player {
     public String getName() {
     	return name;
     }
-    
-    public void setType(int i) {
-    	this.playerType = i;
-    }
-    
+   
     public void switchTurn() {
-    	if(this.hasTurn) {
-    		this.hasTurn = false;
+    	if(this.activeTurn) {
+    		this.activeTurn = false;
     	}else {
-    		this.hasTurn = true;
+    		this.activeTurn = true;
     	}
     }
 
-    public void setTurn(boolean turn) {
-    	this.hasTurn = turn;
-    }
-    
-    public boolean getHasTurn() {
-    	return this.hasTurn;
-    }
+    public boolean getActiveTurn() { return activeTurn; }
+
+    public void setActiveTurn(boolean activeTurn) { this.activeTurn = activeTurn; }
     
     public void scoreSquarePoints() {
     	this.score += 8;
@@ -58,6 +48,9 @@ public class Player {
     	return this.score;
     }
     
+    public void setScore(int score) {
+    	this.score = score;
+    }
   
 
 
