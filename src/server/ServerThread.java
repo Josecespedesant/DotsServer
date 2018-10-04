@@ -43,8 +43,6 @@ public class ServerThread extends Thread {
     public void send() {
      
      Conversion conv = new Conversion();
-     
-     
      JSONObject obj = conv.fetchJsonFile("matrixAsJson.json");
      
         try {
@@ -58,6 +56,7 @@ public class ServerThread extends Thread {
             ex.printStackTrace();
         }
     }
+    
     public void received() throws IOException, ParseException {
     	BufferedReader brs = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     	try{

@@ -19,7 +19,7 @@ public class PintaCuad {
 			matrix.changeValue(1, 2, 2);
 			matrix.changeValue(0, 1, 2);
 			matrix.changeValue(2, 1, 2);
-		}else {
+		}else { 
 			matrix.changeValue(1, 0, 3);
 			matrix.changeValue(1, 2, 3);
 			matrix.changeValue(0, 1, 3);
