@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="957e85fb-4c07-4b67-a906-2e8c8097c404" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Logic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/PintaTri.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/PintaTri.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,7 +75,7 @@
       <usages-collector id="statistics.spring.boot.run.usages" />
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="480" />
+          <entry key="java" value="485" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.mvc.usages" />
@@ -85,7 +83,7 @@
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="480" />
+          <entry key="JAVA" value="485" />
         </counts>
       </usages-collector>
     </session>
@@ -104,8 +102,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/Logic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="2061" column="16" lean-forward="true" selection-start-line="2061" selection-start-column="16" selection-end-line="2061" selection-end-column="16" />
+            <state relative-caret-position="439">
+              <caret line="2073" lean-forward="true" selection-start-line="2073" selection-end-line="2073" />
             </state>
           </provider>
         </entry>
@@ -114,7 +112,7 @@
         <entry file="file://$PROJECT_DIR$/src/logic/PintaTri.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="424">
-              <caret line="714" lean-forward="true" selection-start-line="714" selection-end-line="714" />
+              <caret line="719" lean-forward="true" selection-start-line="719" selection-end-line="719" />
             </state>
           </provider>
         </entry>
@@ -180,6 +178,12 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="27" />
@@ -262,7 +266,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538619432466" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538629378389" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -299,18 +303,18 @@
       <option name="presentableId" value="Default" />
       <updated>1538107047664</updated>
       <workItem from="1538107048823" duration="1699000" />
-      <workItem from="1538617732951" duration="5076000" />
+      <workItem from="1538617732951" duration="6919000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6775000" />
+    <option name="totallyTimeSpent" value="8618000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="694" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49646643" visible="true" weight="0.15757576" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49646643" visible="true" weight="0.15757576" />
       <window_info id="Structure" order="1" sideWeight="0.50353354" side_tool="true" weight="0.25378788" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -336,7 +340,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Database" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="right" id="Maven Projects" order="8" weight="0.32954547" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,14 +449,14 @@
     <entry file="file://$PROJECT_DIR$/src/logic/PintaTri.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="424">
-          <caret line="714" lean-forward="true" selection-start-line="714" selection-end-line="714" />
+          <caret line="719" lean-forward="true" selection-start-line="719" selection-end-line="719" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/Logic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="2061" column="16" lean-forward="true" selection-start-line="2061" selection-start-column="16" selection-end-line="2061" selection-end-column="16" />
+        <state relative-caret-position="439">
+          <caret line="2073" lean-forward="true" selection-start-line="2073" selection-end-line="2073" />
         </state>
       </provider>
     </entry>

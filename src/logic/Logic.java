@@ -202,33 +202,34 @@ public class Logic {
 		
 				//A1
 				//First we verify if the mouse is touching the line
-				if((A1[1] < posX) && (posX < A1[2]) && (A1[3] < posY) && (posY < A1[4])){
+				if((A1[1] < posX) && (posX < A1[2]) && (A1[3] < posY) && (posY < A1[4])) {
 					//Then we see if the line is already made
-					if(matrix.viewValue(1, 0) == 0){
+					if (matrix.viewValue(1, 0) == 0) {
 						//If not, the value in A1[0] corresponds to the color of the line, changing the value to be drawn (later) on the screen
 						this.A1[0] = lineColor;
 						//We also change the value on the matrix so it can't be modified with this iteration again
 						matrix.changeValue(1, 0, 1);
-						
+
 						//If the line is used to enclose a square, it awards 8 points to the player who made it
-						if(this.tb.checkIsScore(this.cuad1)) {
+						if (this.tb.checkIsScore(this.cuad1)) {
 							awardSquarePoints();
 							this.pintacuad.cuadr1(this.matrix);
-						//If the line is used to enclose a triangle, it awards 6 points to the player who made it
-						} else if(this.tb.checkIsScoreTri(tri1) || this.tb.checkIsScoreTri(tri2)) {
+							//If the line is used to enclose a triangle, it awards 6 points to the player who made it
+						} else if (this.tb.checkIsScoreTri(tri1) || this.tb.checkIsScoreTri(tri2)) {
 							awardTriPoints();
-							if(this.tb.checkIsScoreTri(tri1)) {
+							if (this.tb.checkIsScoreTri(tri1)) {
 								this.pintatri.tria1(matrix);
-								
-							} else if(this.tb.checkIsScoreTri(tri2)){
+
+							} else if (this.tb.checkIsScoreTri(tri2)) {
 								this.pintatri.tria2(matrix);
-						} else {
-							//If nothing of that happens, it only switches the players turn
-							this.p1.switchTurn();
-							this.p2.switchTurn();
+							} else {
+								//If nothing of that happens, it only switches the players turn
+								this.p1.switchTurn();
+								this.p2.switchTurn();
+							}
 						}
+						//And all of those comments are valid for the rest of the verifications
 					}return;
-					//And all of those comments are valid for the rest of the verifications
 				}
 				
 				//B1
@@ -251,7 +252,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//C1
@@ -275,7 +276,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1
@@ -299,7 +300,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//A2
@@ -331,7 +332,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//B2
@@ -362,9 +363,9 @@ public class Logic {
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 					}
-				}
+
 				
 				//C2
 				if((C2[1] < posX) && (posX < C2[2]) && (C2[3] < posY) && (posY < C2[4])){
@@ -394,7 +395,7 @@ public class Logic {
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 					}
 				
 				
@@ -428,7 +429,7 @@ public class Logic {
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 					}
 				
 				
@@ -462,7 +463,7 @@ public class Logic {
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 						
 						
 				}
@@ -498,7 +499,7 @@ public class Logic {
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 					}
 				
 				
@@ -533,7 +534,7 @@ public class Logic {
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 					}
 				
 				
@@ -568,7 +569,7 @@ public class Logic {
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 					}
 				
 				
@@ -603,7 +604,7 @@ public class Logic {
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 					}
 				
 				
@@ -638,7 +639,7 @@ public class Logic {
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 					}
 				
 				
@@ -673,7 +674,7 @@ public class Logic {
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 					}
 				
 				
@@ -708,7 +709,7 @@ public class Logic {
 						else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}
+						}return;
 					}
 				
 				
@@ -734,7 +735,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//B5
@@ -759,7 +760,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//C5
@@ -784,7 +785,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D5
@@ -809,7 +810,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 		// Vertical
@@ -834,7 +835,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//E2
@@ -867,7 +868,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//E3
 				if((E3[1] < posX) && (posX < E3[2]) && (E3[3] < posY) && (posY < E3[4])){
@@ -899,7 +900,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//E4
 				if((E4[1] < posX) && (posX < E4[2]) && (E4[3] < posY) && (posY < E4[4])){
@@ -931,7 +932,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//E5
@@ -955,7 +956,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//F1
@@ -979,7 +980,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//F2
@@ -1012,7 +1013,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//F3
 				if((F3[1] < posX) && (posX < F3[2]) && (F3[3] < posY) && (posY < F3[4])){
@@ -1044,7 +1045,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//F4
 				if((F4[1] < posX) && (posX < F4[2]) && (F4[3] < posY) && (posY < F4[4])){
@@ -1076,7 +1077,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//F5
 				if((F5[1] < posX) && (posX < F5[2]) && (F5[3] < posY) && (posY < F5[4])){
@@ -1099,7 +1100,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//G1
@@ -1122,7 +1123,7 @@ public class Logic {
 						}else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
-						}					}
+						}	return;				}
 				}
 				
 				//G2
@@ -1155,7 +1156,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//G3
 				if((G3[1] < posX) && (posX < G3[2]) && (G3[3] < posY) && (posY < G3[4])){
@@ -1187,7 +1188,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//G4
 				if((G4[1] < posX) && (posX < G4[2]) && (G4[3] < posY) && (posY < G4[4])){
@@ -1219,7 +1220,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//G5
 				if((G5[1] < posX) && (posX < G5[2]) && (G5[3] < posY) && (posY < G5[4])){
@@ -1242,7 +1243,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//H1
@@ -1266,7 +1267,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//H2
@@ -1299,7 +1300,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//H3
 				if((H3[1] < posX) && (posX < H3[2]) && (H3[3] < posY) && (posY < H3[4])){
@@ -1331,7 +1332,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//H4
 				if((H4[1] < posX) && (posX < H4[2]) && (H4[3] < posY) && (posY < H4[4])){
@@ -1363,7 +1364,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				//H5
 				if((H5[1] < posX) && (posX < H5[2]) && (H5[3] < posY) && (posY < H5[4])){
@@ -1386,7 +1387,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C1
@@ -1407,7 +1408,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C1
@@ -1428,7 +1429,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C2
@@ -1449,7 +1450,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C2
@@ -1470,7 +1471,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C3
@@ -1491,7 +1492,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C3
@@ -1512,7 +1513,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C4
@@ -1533,7 +1534,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C4
@@ -1554,7 +1555,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C5
@@ -1575,7 +1576,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C5
@@ -1596,7 +1597,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C6
@@ -1617,7 +1618,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C6
@@ -1638,7 +1639,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C7
@@ -1659,7 +1660,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C7
@@ -1680,7 +1681,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C8
@@ -1701,7 +1702,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C8
@@ -1722,7 +1723,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C9
@@ -1743,7 +1744,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C9
@@ -1764,7 +1765,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C10
@@ -1785,7 +1786,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C10
@@ -1806,7 +1807,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C11
@@ -1827,7 +1828,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C11
@@ -1848,7 +1849,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C12
@@ -1869,7 +1870,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C12
@@ -1890,7 +1891,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C13
@@ -1911,7 +1912,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C13
@@ -1932,7 +1933,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C14
@@ -1953,7 +1954,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C14
@@ -1974,7 +1975,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C15
@@ -1995,7 +1996,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C15
@@ -2016,7 +2017,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D1C16
@@ -2037,7 +2038,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				//D2C16
@@ -2058,7 +2059,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 				}
 				
 				if(this.tb.checkGameOver(this.todasLasCajas, this.todasLasCajas))
