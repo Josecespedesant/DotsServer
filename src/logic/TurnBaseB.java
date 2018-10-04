@@ -57,6 +57,7 @@ public class TurnBaseB{
 		}
 		return true;
 	}
+	
 	/**
 	 * Checks if game is over
 	 * @param allBoxes

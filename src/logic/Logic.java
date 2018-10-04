@@ -1743,6 +1743,126 @@ public class Logic {
 					}
 				}
 				
+				//D1C13
+				if((D1C13[1] < posX) && (posX < D1C13[2]) && ((D1C13[1]+D1C13[2])/2)!= posX && (D1C13[3] < posY) && (posY < D1C13[4]) && ((D1C13[3]+D1C13[4])/2)!= posY) {
+					if(matrix.viewValue(7, 1) == 0){
+						this.D1C13[0] = lineColor;
+						matrix.changeValue(7, 1, 1);
+						
+						if(this.tb.checkIsScoreTri(tri49)||this.tb.checkIsScoreTri(tri52)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C13
+				if((D2C13[1] < posX) && (posX < D2C13[2]) && ((D2C13[1]+D2C13[2])/2)!= posX && (D2C13[3] < posY) && (posY < D2C13[4]) && ((D2C13[3]+D2C13[4])/2)!= posY) {
+					if(matrix.viewValue(7, 1) == 0){
+						this.D2C13[0] = lineColor;
+						matrix.changeValue(7, 1, 1);
+						
+						if(this.tb.checkIsScoreTri(tri50)||this.tb.checkIsScoreTri(tri51)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C14
+				if((D1C14[1] < posX) && (posX < D1C14[2]) && ((D1C14[1]+D1C14[2])/2)!= posX && (D1C14[3] < posY) && (posY < D1C14[4]) && ((D1C14[3]+D1C14[4])/2)!= posY) {
+					if(matrix.viewValue(7, 3) == 0){
+						this.D1C14[0] = lineColor;
+						matrix.changeValue(7, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri53)||this.tb.checkIsScoreTri(tri56)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C14
+				if((D2C14[1] < posX) && (posX < D2C14[2]) && ((D2C14[1]+D2C14[2])/2)!= posX && (D2C14[3] < posY) && (posY < D2C14[4]) && ((D2C14[3]+D2C14[4])/2)!= posY) {
+					if(matrix.viewValue(7, 3) == 0){
+						this.D2C14[0] = lineColor;
+						matrix.changeValue(7, 3, 1);
+						
+						if(this.tb.checkIsScoreTri(tri54)||this.tb.checkIsScoreTri(tri55)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C15
+				if((D1C15[1] < posX) && (posX < D1C15[2]) && ((D1C15[1]+D1C15[2])/2)!= posX && (D1C15[3] < posY) && (posY < D1C15[4]) && ((D1C15[3]+D1C15[4])/2)!= posY) {
+					if(matrix.viewValue(7, 5) == 0){
+						this.D1C15[0] = lineColor;
+						matrix.changeValue(7, 5, 1);
+						
+						if(this.tb.checkIsScoreTri(tri57)||this.tb.checkIsScoreTri(tri60)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C15
+				if((D2C15[1] < posX) && (posX < D2C15[2]) && ((D2C15[1]+D2C15[2])/2)!= posX && (D2C15[3] < posY) && (posY < D2C15[4]) && ((D2C15[3]+D2C15[4])/2)!= posY) {
+					if(matrix.viewValue(7, 5) == 0){
+						this.D2C15[0] = lineColor;
+						matrix.changeValue(7, 5, 1);
+						
+						if(this.tb.checkIsScoreTri(tri58)||this.tb.checkIsScoreTri(tri59)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D1C16
+				if((D1C16[1] < posX) && (posX < D1C16[2]) && ((D1C16[1]+D1C16[2])/2)!= posX && (D1C16[3] < posY) && (posY < D1C16[4]) && ((D1C16[3]+D1C16[4])/2)!= posY) {
+					if(matrix.viewValue(7, 7) == 0){
+						this.D1C16[0] = lineColor;
+						matrix.changeValue(7, 7, 1);
+						
+						if(this.tb.checkIsScoreTri(tri61)||this.tb.checkIsScoreTri(tri64)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
+				//D2C16
+				if((D2C16[1] < posX) && (posX < D2C16[2]) && ((D2C16[1]+D2C16[2])/2)!= posX && (D2C16[3] < posY) && (posY < D2C16[4]) && ((D2C16[3]+D2C16[4])/2)!= posY) {
+					if(matrix.viewValue(7, 7) == 0){
+						this.D2C16[0] = lineColor;
+						matrix.changeValue(7, 7, 1);
+						
+						if(this.tb.checkIsScoreTri(tri62)||this.tb.checkIsScoreTri(tri63)) {
+							awardTriPoints();
+						} else {
+							this.p1.switchTurn();
+							this.p2.switchTurn();
+						}
+					}
+				}
+				
 				if(this.tb.checkGameOver(this.todasLasCajas, this.todasLasCajas))
 				{
 					System.out.println("Game over");
