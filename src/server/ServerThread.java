@@ -27,6 +27,7 @@ public class ServerThread extends Thread {
     private LinkedQueue<Socket> queue;
     public static int i;
     public Logic logic;
+    public static int w;
     
     /**
      * Constructor of the ServerThread class that receives the socket.
@@ -40,10 +41,9 @@ public class ServerThread extends Thread {
      * Keep the server running.
      */
     @SuppressWarnings("unchecked")
-    public void send() {
+    public void send(JSONObject newJson) {
      
-     Conversion conv = new Conversion();
-     JSONObject obj = conv.fetchJsonFile("matrixAsJson.json");
+     JSONObject obj = newJson;
      
         try {
          //Aqu� hay que modificar esto para que la condicion de imprimir el objeto json no sea escribir en la consola.
@@ -57,13 +57,13 @@ public class ServerThread extends Thread {
         }
     }
     
+    
     public void received() throws IOException, ParseException {
     	BufferedReader brs = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     	try{
     		String JsonString = brs.readLine();
-    		// System.out.println(JsonString);
     		JSONParser parserS = new JSONParser();
-    		JSONObject json = (JSONObject) parserS.parse(new InputStreamReader(new FileInputStream("C:\\\\Users\\\\Jose Antonio\\\\git\\\\DotClient\\\\matrixAsJson.json"))); //de String a Json
+    		JSONObject json = (JSONObject) parserS.parse(new InputStreamReader(new FileInputStream("matrixAsJson.json")));
     		System.out.println(JsonString);
    
     		Parse parserM = new Parse();
@@ -76,10 +76,17 @@ public class ServerThread extends Thread {
     		
     		logic = new Logic(player1, player2, matrix);
     		
-    		LinkedList posiciones = (LinkedList) list.getHead().getNext().getNext().getNext().getData();
+    		LinkedList pos = (LinkedList) list.getHead().getNext().getNext().getNext().getData();
+    		logic.modifyMatrix(pos, 1);
     		
-    		logic.modifyMatrix(posiciones, 1);
+    		JSONObject newJson = parserM.gameStateToJson(matrix, player1, player2, pos);
+    		Conversion conv = new Conversion();
+    		conv.saveJsonFile(newJson);
+    		
+    		
     		matrix.printMatrix();
+    		
+    		this.send(newJson);
     	} 
     	catch (UnknownHostException ex) {
     		System.out.println("Server not found: " + ex.getMessage());
@@ -89,24 +96,5 @@ public class ServerThread extends Thread {
     	}
     	
     }
- 
-    public void eleccion() throws IOException, ParseException { //metodo prueba
-    	System.out.println("1: enviar, 2: recibir");
-    	Scanner sc = new Scanner(System.in);
-    	i = sc.nextInt();
-    	this.eleccion1();
-    	if(i==1) {
-    		this.send();
-    		}
-    	else {
-    		this.received();
-    		}
-    	}
 
-    public void eleccion1() throws IOException { //metodo prueba
-    	InputStream input = socket.getInputStream();
-    	BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-    	PrintStream ps = new PrintStream(socket.getOutputStream());
-    	ps.println(i);
-    	}
-    }
+   }

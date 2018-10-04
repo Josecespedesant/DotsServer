@@ -6,6 +6,10 @@ import linkedlist.LinkedList;
 import matrix.Matrix;
 
 public class Logic {
+	private final int squarePoints = 8;
+	private final int trianglePoints = 6;
+	
+	
 	Matrix matrix;
 	Player p1;
 	Player p2;
@@ -36,14 +40,121 @@ public class Logic {
 		this.p2 = p2;
 		this.matrix = matrix;
 		this.tb = new TurnBaseB(this,p1,p2);
-		A1 = new int[] {0,3,6,3,6};
-		A2 = new int[] {1,2,4,5,6};
-		E1 = new int[] {1,5,2,3,4};
-		E2 = new int[] {1,2,1,4,5};
-		organizeTriangles();
+		createLines();
+		organizeTriangles(); 
 		organizeSquares();
 		pintacuad  = new PintaCuad(p1,p2);
 		pintatri = new PintaTri(p1,p2);
+		
+		
+	}
+	
+	public void createLines() {
+		//Horizontal
+		A1 = new int[] {0, 150, 225, 140, 140};
+		B1 = new int[] {0, 225, 300, 140, 140}; 
+		C1 = new int[] {0, 300, 375, 140, 140};
+		D1 = new int[] {0, 375, 450, 140, 140};
+		
+		A2 = new int[] {0, 150, 225, 215, 215};
+		B2 = new int[] {0, 225, 300, 215, 215}; 
+		C2 = new int[] {0, 300, 375, 215, 215};
+		D2 = new int[] {0, 375, 450, 215, 215};
+		
+		A3 = new int[] {0, 150, 225, 290, 290};
+		B3 = new int[] {0, 225, 300, 290, 290}; 
+		C3 = new int[] {0, 300, 375, 290, 290};
+		D3 = new int[] {0, 375, 450, 290, 290};
+		
+		A4 = new int[] {0, 150, 225, 365, 365};
+		B4 = new int[] {0, 225, 300, 365, 365}; 
+		C4 = new int[] {0, 300, 375, 365, 365};
+		D4 = new int[] {0, 375, 450, 365, 365};
+		
+		A5 = new int[] {0, 150, 225, 440, 440};
+		B5 = new int[] {0, 225, 300, 440, 440}; 
+		C5 = new int[] {0, 300, 375, 440, 440};
+		D5 = new int[] {0, 375, 450, 440, 440};
+		
+		//Vertical
+		
+		E1 = new int[] {0, 150, 150, 140, 215};
+		F1 = new int[] {0, 150, 150, 215, 290};
+		G1 = new int[] {0, 150, 150, 290, 365};
+		H1 = new int[] {0, 150, 150, 365, 440};
+		
+		E2 = new int[] {0, 225, 225, 140, 215};
+		F2 = new int[] {0, 225, 225, 215, 290};
+		G2 = new int[] {0, 225, 225, 290, 365};
+		H2 = new int[] {0, 225, 225, 365, 440};
+		
+		E3 = new int[] {0, 300, 300, 140, 215};
+		F3 = new int[] {0, 300, 300, 215, 290};
+		G3 = new int[] {0, 300, 300, 290, 365};
+		H3 = new int[] {0, 300, 300, 365, 440};
+		
+		E4 = new int[] {0, 375, 375, 140, 215};
+		F4 = new int[] {0, 375, 375, 215, 290};
+		G4 = new int[] {0, 375, 375, 290, 365};
+		H4 = new int[] {0, 375, 375, 365, 440};
+		
+		E5 = new int[] {0, 440, 440, 140, 215};
+		F5 = new int[] {0, 440, 440, 215, 290};
+		G5 = new int[] {0, 440, 440, 290, 365};
+		H5 = new int[] {0, 440, 440, 365, 440};
+		
+		//Diagonals
+		
+		D1C1 = new int[] {0, 150, 225, 215, 140};
+		D2C1 = new int[] {0, 225, 150, 215, 140};
+		
+		D1C2 = new int[] {0, 225, 300, 215, 140};
+		D2C2 = new int[] {0, 300, 225, 215, 140};
+		
+		D1C3 = new int[] {0, 300, 375, 215, 140};
+		D2C3 = new int[] {0, 375, 300, 215, 140};
+		
+		D1C4 = new int[] {0, 375, 450, 215, 140};
+		D2C4 = new int[] {0, 450, 375, 215, 140};
+		
+		
+		D1C5 = new int[] {0, 150, 225, 290, 215};
+		D2C5 = new int[] {0, 225, 150, 290, 215};
+		
+		D1C6 = new int[] {0, 225, 300, 290, 215};
+		D2C6 = new int[] {0, 300, 225, 290, 215};
+		
+		D1C7 = new int[] {0, 300, 375, 290, 215};
+		D2C7 = new int[] {0, 375, 300, 290, 215};
+		
+		D1C8 = new int[] {0, 375, 450, 290, 215};
+		D2C8 = new int[] {0, 450, 375, 290, 215};
+		
+		
+		D1C9 = new int[] {0, 150, 225, 365, 290};
+		D2C9 = new int[] {0, 225, 150, 365, 290};
+		
+		D1C10 = new int[] {0, 225, 300, 365, 290};
+		D2C10 = new int[] {0, 300, 225, 365, 290};
+		
+		D1C11 = new int[] {0, 300, 375, 365, 290};
+		D2C11 = new int[] {0, 375, 300, 365, 290};
+		
+		D1C12 = new int[] {0, 375, 450, 365, 290};
+		D2C12 = new int[] {0, 450, 375, 365, 290};
+		
+		
+		D1C13 = new int[] {0, 150, 225, 440, 365};
+		D2C13 = new int[] {0, 225, 150, 440, 365};
+		
+		D1C14 = new int[] {0, 225, 300, 440, 365};
+		D2C14 = new int[] {0, 300, 225, 440, 365};
+		
+		D1C15 = new int[] {0, 300, 375, 440, 365};
+		D2C15 = new int[] {0, 375, 300, 440, 365};
+		
+		D1C16 = new int[] {0, 375, 450, 440, 365};
+		D2C16 = new int[] {0, 450, 375, 440, 365};
 	}
 
 	public void organizeTriangles() {
@@ -175,20 +286,20 @@ public class Logic {
 
 	public void awardSquarePoints() {
 		if(this.p1.getActiveTurn()) {
-			this.p1.scoreSquarePoints();
+			this.p1.setScore(p1.getScore() + this.squarePoints);
 		}
 		else {
-			this.p2.scoreSquarePoints();
+			this.p2.setScore(p2.getScore() + this.squarePoints);
 		}
 	}
 
 
 	public void awardTriPoints() {
 		if(this.p1.getActiveTurn()) {
-			this.p1.scoreTriPoints();
+			this.p1.setScore(p1.getScore() + this.trianglePoints);
 		}
 		else {
-			this.p2.scoreTriPoints();
+			this.p2.setScore(p2.getScore() + this.trianglePoints);
 		}
 	}
 

@@ -36,16 +36,8 @@ public class Player {
 
     public void setActiveTurn(boolean activeTurn) { this.activeTurn = activeTurn; }
     
-    public void scoreSquarePoints() {
-    	this.score += 8;
-    }
-    
-    public void scoreTriPoints() {
-    	this.score += 6;
-    }
-    
     public int getScore() {
-    	return this.score;
+    	return this.score; 
     }
     
     public void setScore(int score) {

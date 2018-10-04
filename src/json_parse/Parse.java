@@ -92,7 +92,7 @@ public class Parse {
         Player _player1 = new Player(player1Name);
         long player1Score = (long) player1.get(1);
         _player1.setScore(player1Score);
-        boolean player1ActiveTurn = (boolean) player1.get(2);
+        boolean player1ActiveTurn = (boolean) player1.get(2); 
         _player1.setActiveTurn(player1ActiveTurn);
 
         // Decoding player1
