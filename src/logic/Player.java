@@ -51,6 +51,10 @@ public class Player {
     public void setScore(int score) {
     	this.score = score;
     }
+    
+    public void setScore(long score) {
+    	this.score = (int) score;
+    }
   
 
 

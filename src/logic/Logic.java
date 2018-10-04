@@ -26,10 +26,9 @@ public class Logic {
 	// Where everything is saved
 	int[][][] todosLosTriang;
 	int[][][] todasLasCajas;
-	PintaCuad pintacuad  = new PintaCuad();
-	PintaTri pintatri = new PintaTri();
+	PintaTri pintatri;
 	Parse parser = new Parse();
-	
+	PintaCuad pintacuad;
 	
 	
 	public Logic(Player p1, Player p2, Matrix matrix) {
@@ -37,8 +36,14 @@ public class Logic {
 		this.p2 = p2;
 		this.matrix = matrix;
 		this.tb = new TurnBaseB(this,p1,p2);
+		A1 = new int[] {0,3,6,3,6};
+		A2 = new int[] {1,2,4,5,6};
+		E1 = new int[] {1,5,2,3,4};
+		E2 = new int[] {1,2,1,4,5};
 		organizeTriangles();
 		organizeSquares();
+		pintacuad  = new PintaCuad(p1,p2);
+		pintatri = new PintaTri(p1,p2);
 	}
 	
 	public void organizeTriangles() {
@@ -189,11 +194,11 @@ public class Logic {
 
 	
 
-	public void modifyMatrix(LinkedList<Integer> posiciones, int lineColor) {
+	public void modifyMatrix(LinkedList posiciones, int lineColor) {
 		//Horizontales
 		
-		int posX = (int) posiciones.getHead().getData();
-		int posY = (int) posiciones.getHead().getNext().getData();
+		long posX = (long) posiciones.getHead().getData();
+		long posY = (long) posiciones.getHead().getNext().getData();
 		
 				//A1
 				//First we verify if the mouse is touching the line
@@ -204,6 +209,7 @@ public class Logic {
 						this.A1[0] = lineColor;
 						//We also change the value on the matrix so it can't be modified with this iteration again
 						matrix.changeValue(1, 0, 1);
+						
 						//If the line is used to enclose a square, it awards 8 points to the player who made it
 						if(this.tb.checkIsScore(this.cuad1)) {
 							awardSquarePoints();
@@ -221,7 +227,7 @@ public class Logic {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
 						}
-					}
+					}return;
 					//And all of those comments are valid for the rest of the verifications
 				}
 				

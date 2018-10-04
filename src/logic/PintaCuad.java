@@ -6,6 +6,11 @@ public class PintaCuad {
 	Player p1;
 	Player p2;
 	
+	public PintaCuad(Player p1, Player p2) {
+		this.p1 = p1;
+		this.p2 = p2;
+	}
+	
 	public void cuadr1(Matrix matrix) {
 		
 		

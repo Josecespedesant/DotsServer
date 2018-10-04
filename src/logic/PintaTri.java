@@ -5,7 +5,12 @@ import matrix.Matrix;
 public class PintaTri {
 	Player p1;
 	Player p2;
-	//FALTA MANTERLE LAS DIAGONALES, ULTIMA LINEA
+	
+	public PintaTri(Player p1, Player p2) {
+		this.p1 = p1;
+		this.p2 = p2;
+	}
+	
 	public void tria1(Matrix matrix) {
 		if(p1.getActiveTurn()==true) {
 			matrix.changeValue(1, 0, 2);
