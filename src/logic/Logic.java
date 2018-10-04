@@ -1391,6 +1391,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri1)||this.tb.checkIsScoreTri(tri4)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri1)) {
+								this.pintatri.tria1(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri4)){
+								this.pintatri.tria4(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1406,6 +1412,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri2)||this.tb.checkIsScoreTri(tri3)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri2)) {
+								this.pintatri.tria2(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri3)){
+								this.pintatri.tria3(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1421,6 +1433,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri5)||this.tb.checkIsScoreTri(tri8)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri5)) {
+								this.pintatri.tria5(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri8)){
+								this.pintatri.tria8(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1436,6 +1454,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri6)||this.tb.checkIsScoreTri(tri7)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri6)) {
+								this.pintatri.tria6(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri7)){
+								this.pintatri.tria7(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1451,6 +1475,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri9)||this.tb.checkIsScoreTri(tri12)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri9)) {
+								this.pintatri.tria9(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri12)){
+								this.pintatri.tria12(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1466,6 +1496,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri10)||this.tb.checkIsScoreTri(tri11)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri10)) {
+								this.pintatri.tria10(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri11)){
+								this.pintatri.tria11(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1481,6 +1517,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri13)||this.tb.checkIsScoreTri(tri16)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri13)) {
+								this.pintatri.tria13(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri16)){
+								this.pintatri.tria16(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1496,6 +1538,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri14)||this.tb.checkIsScoreTri(tri15)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri14)) {
+								this.pintatri.tria14(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri15)){
+								this.pintatri.tria15(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1511,6 +1559,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri17)||this.tb.checkIsScoreTri(tri20)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri17)) {
+								this.pintatri.tria17(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri20)){
+								this.pintatri.tria20(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1526,6 +1580,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri18)||this.tb.checkIsScoreTri(tri19)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri18)) {
+								this.pintatri.tria18(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri19)){
+								this.pintatri.tria19(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1541,6 +1601,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri21)||this.tb.checkIsScoreTri(tri24)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri21)) {
+								this.pintatri.tria21(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri24)){
+								this.pintatri.tria24(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1556,6 +1622,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri22)||this.tb.checkIsScoreTri(tri23)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri22)) {
+								this.pintatri.tria22(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri23)){
+								this.pintatri.tria23(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1571,6 +1643,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri25)||this.tb.checkIsScoreTri(tri28)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri25)) {
+								this.pintatri.tria25(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri28)){
+								this.pintatri.tria28(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1586,6 +1664,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri26)||this.tb.checkIsScoreTri(tri27)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri26)) {
+								this.pintatri.tria26(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri27)){
+								this.pintatri.tria27(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1601,6 +1685,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri29)||this.tb.checkIsScoreTri(tri32)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri29)) {
+								this.pintatri.tria29(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri32)){
+								this.pintatri.tria32(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1616,6 +1706,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri30)||this.tb.checkIsScoreTri(tri31)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri30)) {
+								this.pintatri.tria30(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri31)){
+								this.pintatri.tria31(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1631,6 +1727,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri33)||this.tb.checkIsScoreTri(tri36)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri33)) {
+								this.pintatri.tria33(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri36)){
+								this.pintatri.tria36(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1646,6 +1748,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri34)||this.tb.checkIsScoreTri(tri35)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri34)) {
+								this.pintatri.tria34(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri35)){
+								this.pintatri.tria35(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1661,6 +1769,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri37)||this.tb.checkIsScoreTri(tri40)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri37)) {
+								this.pintatri.tria37(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri40)){
+								this.pintatri.tria40(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1676,6 +1790,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri38)||this.tb.checkIsScoreTri(tri39)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri38)) {
+								this.pintatri.tria38(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri39)){
+								this.pintatri.tria39(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1691,6 +1811,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri41)||this.tb.checkIsScoreTri(tri44)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri41)) {
+								this.pintatri.tria41(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri44)){
+								this.pintatri.tria44(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1706,6 +1832,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri42)||this.tb.checkIsScoreTri(tri43)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri42)) {
+								this.pintatri.tria42(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri43)){
+								this.pintatri.tria43(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1721,6 +1853,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri45)||this.tb.checkIsScoreTri(tri48)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri45)) {
+								this.pintatri.tria45(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri48)){
+								this.pintatri.tria48(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1736,6 +1874,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri46)||this.tb.checkIsScoreTri(tri47)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri46)) {
+								this.pintatri.tria46(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri47)){
+								this.pintatri.tria47(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1751,6 +1895,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri49)||this.tb.checkIsScoreTri(tri52)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri49)) {
+								this.pintatri.tria49(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri52)){
+								this.pintatri.tria52(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1766,6 +1916,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri50)||this.tb.checkIsScoreTri(tri51)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri50)) {
+								this.pintatri.tria50(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri51)){
+								this.pintatri.tria51(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1781,6 +1937,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri53)||this.tb.checkIsScoreTri(tri56)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri53)) {
+								this.pintatri.tria53(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri56)){
+								this.pintatri.tria56(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1796,6 +1958,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri54)||this.tb.checkIsScoreTri(tri55)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri54)) {
+								this.pintatri.tria54(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri55)){
+								this.pintatri.tria55(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1811,6 +1979,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri57)||this.tb.checkIsScoreTri(tri60)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri57)) {
+								this.pintatri.tria57(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri60)){
+								this.pintatri.tria60(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1826,6 +2000,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri58)||this.tb.checkIsScoreTri(tri59)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri58)) {
+								this.pintatri.tria58(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri59)){
+								this.pintatri.tria59(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1841,6 +2021,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri61)||this.tb.checkIsScoreTri(tri64)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri61)) {
+								this.pintatri.tria61(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri64)){
+								this.pintatri.tria64(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
@@ -1856,6 +2042,12 @@ public class Logic {
 						
 						if(this.tb.checkIsScoreTri(tri62)||this.tb.checkIsScoreTri(tri63)) {
 							awardTriPoints();
+							if(this.tb.checkIsScoreTri(tri62)) {
+								this.pintatri.tria62(matrix);
+
+							} else if(this.tb.checkIsScoreTri(tri63)){
+								this.pintatri.tria63(matrix);
+							}
 						} else {
 							this.p1.switchTurn();
 							this.p2.switchTurn();
