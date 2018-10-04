@@ -64,7 +64,7 @@ public class ServerThread extends Thread {
     		String JsonString = brs.readLine();
     		// System.out.println(JsonString);
     		JSONParser parserS = new JSONParser();
-    		JSONObject json = (JSONObject) parserS.parse(new InputStreamReader(new FileInputStream("matrixAsJson.json"))); //de String a Json
+    		JSONObject json = (JSONObject) parserS.parse(new InputStreamReader(new FileInputStream("C:\\\\Users\\\\Jose Antonio\\\\git\\\\DotClient\\\\matrixAsJson.json"))); //de String a Json
     		System.out.println(JsonString);
    
     		Parse parserM = new Parse();

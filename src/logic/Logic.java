@@ -1445,9 +1445,9 @@ public class Logic {
 				
 				//D1C3
 				if((D1C3[1] < posX) && (posX < D1C3[2]) && ((D1C3[1]+D1C3[2])/2)!= posX && (D1C3[3] < posY) && (posY < D1C3[4]) && ((D1C3[3]+D1C3[4])/2)!= posY) {
-					if(matrix.viewValue(1, 3) == 0){
+					if(matrix.viewValue(1, 5) == 0){
 						this.D1C3[0] = lineColor;
-						matrix.changeValue(1, 3, 1);
+						matrix.changeValue(1, 5, 1);
 						
 						if(this.tb.checkIsScoreTri(tri9)||this.tb.checkIsScoreTri(tri12)) {
 							awardTriPoints();
@@ -1460,9 +1460,9 @@ public class Logic {
 				
 				//D2C3
 				if((D2C3[1] < posX) && (posX < D2C3[2]) && ((D2C3[1]+D2C3[2])/2)!= posX && (D2C3[3] < posY) && (posY < D2C3[4]) && ((D2C3[3]+D2C3[4])/2)!= posY) {
-					if(matrix.viewValue(1, 3) == 0){
+					if(matrix.viewValue(1, 5) == 0){
 						this.D2C3[0] = lineColor;
-						matrix.changeValue(1, 3, 1);
+						matrix.changeValue(1, 5, 1);
 						
 						if(this.tb.checkIsScoreTri(tri10)||this.tb.checkIsScoreTri(tri11)) {
 							awardTriPoints();
@@ -1475,9 +1475,9 @@ public class Logic {
 				
 				//D1C4
 				if((D1C4[1] < posX) && (posX < D1C4[2]) && ((D1C4[1]+D1C4[2])/2)!= posX && (D1C4[3] < posY) && (posY < D1C4[4]) && ((D1C4[3]+D1C4[4])/2)!= posY) {
-					if(matrix.viewValue(1, 5) == 0){
+					if(matrix.viewValue(1, 7) == 0){
 						this.D1C3[0] = lineColor;
-						matrix.changeValue(1, 5, 1);
+						matrix.changeValue(1, 7, 1);
 						
 						if(this.tb.checkIsScoreTri(tri13)||this.tb.checkIsScoreTri(tri16)) {
 							awardTriPoints();
@@ -1490,9 +1490,9 @@ public class Logic {
 				
 				//D2C4
 				if((D2C4[1] < posX) && (posX < D2C4[2]) && ((D2C4[1]+D2C4[2])/2)!= posX && (D2C4[3] < posY) && (posY < D2C4[4]) && ((D2C4[3]+D2C4[4])/2)!= posY) {
-					if(matrix.viewValue(1, 5) == 0){
+					if(matrix.viewValue(1, 7) == 0){
 						this.D2C4[0] = lineColor;
-						matrix.changeValue(1, 5, 1);
+						matrix.changeValue(1, 7, 1);
 						
 						if(this.tb.checkIsScoreTri(tri14)||this.tb.checkIsScoreTri(tri15)) {
 							awardTriPoints();
@@ -1580,9 +1580,9 @@ public class Logic {
 				
 				//D2C7
 				if((D2C7[1] < posX) && (posX < D2C7[2]) && ((D2C7[1]+D2C6[2])/2)!= posX && (D2C7[3] < posY) && (posY < D2C7[4]) && ((D2C7[3]+D2C7[4])/2)!= posY) {
-					if(matrix.viewValue(3, 3) == 0){
+					if(matrix.viewValue(3, 5) == 0){
 						this.D2C7[0] = lineColor;
-						matrix.changeValue(3, 3, 1);
+						matrix.changeValue(3, 5, 1);
 						
 						if(this.tb.checkIsScoreTri(tri26)||this.tb.checkIsScoreTri(tri27)) {
 							awardTriPoints();
@@ -1715,9 +1715,9 @@ public class Logic {
 				
 				//D1C12
 				if((D1C12[1] < posX) && (posX < D1C12[2]) && ((D1C12[1]+D1C12[2])/2)!= posX && (D1C12[3] < posY) && (posY < D1C12[4]) && ((D1C12[3]+D1C12[4])/2)!= posY) {
-					if(matrix.viewValue(5, 5) == 0){
+					if(matrix.viewValue(5, 7) == 0){
 						this.D1C12[0] = lineColor;
-						matrix.changeValue(5, 5, 1);
+						matrix.changeValue(5, 7, 1);
 						
 						if(this.tb.checkIsScoreTri(tri45)||this.tb.checkIsScoreTri(tri48)) {
 							awardTriPoints();
@@ -1730,9 +1730,9 @@ public class Logic {
 				
 				//D2C12
 				if((D2C12[1] < posX) && (posX < D2C12[2]) && ((D2C12[1]+D2C12[2])/2)!= posX && (D2C12[3] < posY) && (posY < D2C12[4]) && ((D2C12[3]+D2C12[4])/2)!= posY) {
-					if(matrix.viewValue(5, 5) == 0){
+					if(matrix.viewValue(5, 7) == 0){
 						this.D2C12[0] = lineColor;
-						matrix.changeValue(5, 5, 1);
+						matrix.changeValue(5, 7, 1);
 						
 						if(this.tb.checkIsScoreTri(tri46)||this.tb.checkIsScoreTri(tri47)) {
 							awardTriPoints();
