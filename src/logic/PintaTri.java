@@ -72,7 +72,7 @@ public class PintaTri {
 			matrix.changeValue(4, 1, 2);
 			matrix.changeValue(1, 3, 2);
 		}else {
-			matrix.changeValue(3, 0, 3);
+			matrix.changeValue(3, 0, 3); 
 			matrix.changeValue(4, 1, 3);
 			matrix.changeValue(1, 3, 3);
 		}

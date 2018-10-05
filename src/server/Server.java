@@ -12,7 +12,7 @@ public class Server {
 	private ServerSocket server;
 	private static Server sv;
 	// Indicates if there's a game in progress.
-	private boolean flagGame = false;
+	public static boolean flagGame = false;
 	 
 	/**
 	 * Receives as the IP where it'll be running as parameter.
@@ -22,7 +22,7 @@ public class Server {
 	private Server(String ipAddress) throws Exception{
 		if(ipAddress != null && !ipAddress.isEmpty()) {
 			this.server = new ServerSocket(4444,1,InetAddress.getByName(ipAddress));	
-		}else {
+		}else { 
 			this.server = new ServerSocket(0,1,InetAddress.getLocalHost());	
 		}
 	}
@@ -60,15 +60,16 @@ public class Server {
             			System.out.println(clients.getSize());
             			System.out.println("New client connected");
             			if(clients.getSize()==2 && flagGame == false) {
-            				System.out.println("Game Start");//Aquí se llamaría un método que cambie la pantalla de registro a la del juego en sí
+                			clients.first().receivedNames();
             				clients.first().received();
             				clients.dequeue();
+                			clients.first().receivedNames();
             				clients.first().received(); 
             				clients.dequeue();
             				
             				flagGame = true;
             				//Y cuando el juego termine se cambia el flag nuevamente a falso
-            			}
+             			}
             		}else {
             			clients.enqueue(st);
             			System.out.println("Max number of players reached");
@@ -100,7 +101,7 @@ public class Server {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		Server app = getSingletonInstance("127.0.0.1");
+		Server app = getSingletonInstance("192.168.100.24");
 		app.listen();
 	  }
 }

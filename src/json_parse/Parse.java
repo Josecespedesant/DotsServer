@@ -90,22 +90,23 @@ public class Parse {
         JSONArray player1 = (JSONArray) players.get("1");
         String player1Name = (String) player1.get(0);
         Player _player1 = new Player(player1Name);
-        long player1Score = (long) player1.get(1);
+        int player1Score = (int) _player1.getScore();
         _player1.setScore(player1Score);
-        boolean player1ActiveTurn = (boolean) player1.get(2); 
+        boolean player1ActiveTurn = (boolean) _player1.getActiveTurn();
         _player1.setActiveTurn(player1ActiveTurn);
 
         // Decoding player1
         JSONArray player2 = (JSONArray) players.get("2");
         String player2Name = (String) player2.get(0);
         Player _player2 = new Player(player2Name);
-        long player2Score = (long) player1.get(1);
+        int player2Score = (int) _player2.getScore();
         _player2.setScore(player2Score);
-        boolean player2ActiveTurn = (boolean) player2.get(2);
+        boolean player2ActiveTurn = (boolean) _player2.getActiveTurn();
         _player2.setActiveTurn(player2ActiveTurn);
 
         // Decoding Mouse position
         LinkedList posMouse = new LinkedList();
+        //JSONArray mouse = new JSONArray();
         JSONArray mouse = (JSONArray) jsonDoc.get("mouse");
         posMouse.append(mouse.get(0));
         posMouse.append(mouse.get(1));
@@ -121,7 +122,7 @@ public class Parse {
         for (int j = 0; j < matrixColumns; j++) {
             JSONArray tempColumn = (JSONArray) _matrix.get(j);
             for (int i = 0; i < matrixRows; i++) {
-                int tempValue = ((Long) tempColumn.get(i)).intValue();
+                int tempValue = ((Integer) tempColumn.get(i)).intValue();
                 matrix.changeValue(i, j, tempValue);
             }
         }
@@ -133,18 +134,32 @@ public class Parse {
         return gameState;
     }
 
-    public static void main(String[] args) {
-        Matrix matrix = new Matrix(4, 4, 5);
-        LinkedList posMouse = new LinkedList();
-        posMouse.append(40);
-        posMouse.append(70);
-        Player player1 = new Player("David");
-        Player player2 = new Player("Daniel");
-
-        Parse parser = new Parse();
-        JSONObject doc = parser.gameStateToJson(matrix, player1, player2, posMouse);
-
-        Conversion conv = new Conversion();
-        conv.saveJsonFile(doc);
+    public JSONObject namaAsJson(String name) {
+        JSONObject jsonDoc = new JSONObject();
+        jsonDoc.put("name", name);
+        return jsonDoc;
     }
+
+    public JSONObject playerNamesasJson(String player1Name, String player2Name) {
+        JSONObject jsonDoc = new JSONObject();
+        jsonDoc.put("1", player1Name);
+        jsonDoc.put("2", player2Name); 
+        return jsonDoc;
+    }
+    
+    public String jsonToName(JSONObject jsonDoc) {
+        String name = (String) jsonDoc.get("name");
+        return name;
+    }
+
+
+    public LinkedList jsonToPlayerNames(JSONObject jsonDoc) {
+        LinkedList names = new LinkedList();
+        String namePlayer1 = (String) jsonDoc.get("1");
+        names.append(namePlayer1);
+        String namePlayer2 = (String) jsonDoc.get("2");
+        names.append(namePlayer2);
+        return names;
+    }
+
 }
